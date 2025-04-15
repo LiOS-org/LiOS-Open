@@ -1,0 +1,22 @@
+/* Top Navigation */
+.navigation_container_top{
+    display: flexbox;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: left;
+    top: 5%;
+    position: sticky;
+    border-radius: 5px;
+    /* Below are only for testing purpose will be removed after testing */
+    background: var(--b2996e);
+    height:fit-content;
+}
+.navigation_buttons{
+    display: flex;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    /* Below are only for testing purpose will be removed after testing */
+    background:#d4e6b1;
+}
