@@ -1,0 +1,19 @@
+#Frosted_Background {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    mix-blend-mode: normal;
+}
+.Frosted_Background {
+    -webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px);
+    mix-blend-mode: normal;
+}
+
+#Frosted_Background#content {
+    display: block;
+    color: black; /* Ensure text color is solid */
+    text-align: center; /* Center the text */
+    padding: auto;
+    width: 90%;
+    margin: 5%;
+}

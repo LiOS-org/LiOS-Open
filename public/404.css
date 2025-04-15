@@ -1,0 +1,28 @@
+@import url(https://lios-colors.web.app/dist/custom_color_definitions.css);
+#Frosted_Background {
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    mix-blend-mode: normal;
+}
+div{
+    display: block;
+    width: 60%;
+    padding: auto;
+    height: auto;
+    margin: 20%;
+    background: var(--ffffff);
+    text-align: center;
+    border-radius: 5px;
+}
+:root{
+    height: 100%;
+    background: linear-gradient(45deg, #ff914d,#8c52ff, #86a8e7, #91eae4);
+    background-size: 200% 200%;
+    animation: backgroundShift 10s infinite;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}

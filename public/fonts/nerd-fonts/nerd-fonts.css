@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'academy_engraved_let_fonts';
+    src: url('Academy%20Engraved%20LET%20Fonts.ttf');
+}
+
+@font-face {
+    font-family: 'andale_mono';
+    src: url('Andale%20Mono.ttf');
+}
+
+@font-face {
+    font-family: 'apple_braille_outline_6_dot';
+    src: url('Apple%20Braille%20Outline%206%20Dot.ttf');
+}
+
+@font-face {
+    font-family: 'apple_braille_outline_8_dot';
+    src: url('Apple%20Braille%20Outline%208%20Dot.ttf');
+}
+
+@font-face {
+    font-family: 'apple_braille_pinpoint_6_dot';
+    src: url('Apple%20Braille%20Pinpoint%206%20Dot.ttf');
+}
+
+@font-face {
+    font-family: 'apple_braille_pinpoint_8_dot';
+    src: url('Apple%20Braille%20Pinpoint%208%20Dot.ttf');
+}
+
+@font-face {
+    font-family: 'apple_chancery';
+    src: url('Apple%20Chancery.ttf');
+}
+
+@font-face {
+    font-family: 'arial_black';
+    src: url('Arial%20Black.ttf');
+}
+
+@font-face {
+    font-family: 'arial_bold_italic';
+    src: url('Arial%20Bold%20Italic.ttf');
+}
+
+@font-face {
+    font-family: 'arial_rounded_bold';
+    src: url('Arial%20Rounded%20Bold.ttf');
+}
+
+@font-face {
+    font-family: 'arial';
+    src: url('Arial.ttf');
+}
+
+@font-face {
+    font-family: 'ayuthaya';
+    src: url('Ayuthaya.ttf');
+}
+
+@font-face {
+    font-family: 'bigcaslon';
+    src: url('BigCaslon.ttf');
+}
+
+@font-face {
+    font-family: 'badoni_72_smallcaps_book';
+    src: url('Bodoni%2072%20Smallcaps%20Book.ttf');
+}
+
+@font-face {
+    font-family: 'badoni_ornaments';
+    src: url('Bodoni%20Ornaments.ttf');
+}
+
+@font-face {
+    font-family: 'bradley_hand_bold';
+    src: url('Bradley%20Hand%20Bold.ttf');
+}
+
+@font-face {
+    font-family: 'brush_script';
+    src: url('Brush%20Script.ttf');
+}
+
+@font-face {
+    font-family: 'chalkduster';
+    src: url('Chalkduster.ttf');
+}

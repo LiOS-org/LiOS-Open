@@ -1,0 +1,10 @@
+::-webkit-scrollbar{
+    display: none;
+}
+#reading-bar {
+    height: var(--reading_bar_height);
+    background: var(--reading_bar_color); /* Change to your desired color */
+    width: 0;
+    transition: width 0.25s; /* Smooth transition */
+    z-index: var(reading_bar_index); /* Ensure it stays on top */
+}
