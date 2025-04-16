@@ -29,7 +29,8 @@
     "build": "npm run clean-dist-folder && node scripts/build.js && npm run build-history",
     "semantic-release": "semantic-release",
     "build-history": "node scripts/tools/history.js > dist/history.json",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build-index": "node generateIndex.cjs"
   },
   "repository": {
     "type": "git",

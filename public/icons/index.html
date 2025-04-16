@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lucid Icons</title>
+  <style>
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.button-row a,
+.button-row button {
+  background: #f1f3f5;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button-row button:hover,
+.button-row a:hover {
+  background: #dee2e6;
+}
+  </style>
+</head>
+<body>
+  <h1>Lucid Icons</h1>
+  <input type="text" id="search" placeholder="Search icons...">
+
+  <div class="grid" id="icon-grid">Loading icons...</div>
+
+  <script>
+    const grid = document.getElementById("icon-grid");
+    const searchInput = document.getElementById("search");
+  
+    let icons = [];
+  
+    // Your Firebase URL base
+    const BASE_URL = "https://lios-open.web.app/icons";
+  
+    fetch("../data/icons.json")
+      .then(res => res.json())
+      .then(data => {
+        icons = data;
+        renderIcons(data);
+      })
+      .catch(err => {
+        grid.textContent = "Failed to load icons.";
+        console.error(err);
+      });
+  
+    function renderIcons(list) {
+      grid.innerHTML = "";
+      if (list.length === 0) {
+        grid.innerHTML = "<p>No icons found.</p>";
+        return;
+      }
+  
+      list.forEach(filename => {
+        const card = document.createElement("div");
+        card.className = "icon-card";
+  
+        const img = document.createElement("img");
+        img.src = `./${filename}`;
+        img.alt = filename;
+  
+        const name = document.createElement("div");
+        name.className = "filename";
+        name.textContent = filename.replace(".svg", "");
+  
+        const buttons = document.createElement("div");
+        buttons.className = "button-row";
+  
+        // Download link
+        const downloadBtn = document.createElement("a");
+        downloadBtn.href = `./${filename}`;
+        downloadBtn.download = filename;
+        downloadBtn.textContent = "⬇️";
+        downloadBtn.title = "Download";
+  
+        // Copy URL button
+        const copyBtn = document.createElement("button");
+        copyBtn.textContent = "🔗";
+        copyBtn.title = "Copy URL";
+        copyBtn.addEventListener("click", () => {
+          const fullUrl = `${BASE_URL}/${filename}`;
+          navigator.clipboard.writeText(fullUrl).then(() => {
+            copyBtn.textContent = "✅";
+            setTimeout(() => (copyBtn.textContent = "🔗"), 1000);
+          });
+        });
+  
+        buttons.appendChild(downloadBtn);
+        buttons.appendChild(copyBtn);
+  
+        card.appendChild(img);
+        card.appendChild(name);
+        card.appendChild(buttons);
+        grid.appendChild(card);
+      });
+    }
+  
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase().trim();
+      const filtered = icons.filter(filename =>
+        filename.toLowerCase().includes(query)
+      );
+      renderIcons(filtered);
+    });
+  </script>
+</body>
+</html>
