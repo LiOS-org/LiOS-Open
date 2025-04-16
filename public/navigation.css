@@ -1,11 +1,11 @@
 /* Top Navigation */
 .navigation_container_top{
-    display: flexbox;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: left;
-    top: 5%;
+    justify-content: flex-start;
+    align-items: flex-start;
     position: sticky;
+    align-items: left;
     border-radius: 5px;
 }
 .navigation_buttons{
