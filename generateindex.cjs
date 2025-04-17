@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 // 👇 Customize these paths
-const iconsDir = "public/icons";
+const iconsDir = "public/icons/icons";
 const outputDir = "public/data";
 const outputFile = path.join(outputDir, "icons.json");
 
