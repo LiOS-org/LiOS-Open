@@ -16,7 +16,7 @@
     width: fit-content;
 }
 /* Bottom Navigation */
-.navigation_container_top{
+.navigation_container_bottom{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
