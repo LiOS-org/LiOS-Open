@@ -1,5 +1,7 @@
-@import url(https://lios-colors.web.app/dist/custom_color_definitions.css);
+@import url(https://lios-colors.web.app/dist/translucent_colors.css);
 @import url(Frosted_Glass.css);
 @import url(Moving_Gradients.css);
 @import url(fonts.css);
 @import url(navigation.css);
+@import url(loaders.css);
+@import url(engraved_text.css);

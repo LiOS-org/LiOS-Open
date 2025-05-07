@@ -1,11 +1,11 @@
 #Frosted_Background {
-    -webkit-backdrop-filter: blur(100px);
-    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(14px) brightness(75%);
+    backdrop-filter: blur(14px) brightness(75%);
     mix-blend-mode: normal;
 }
 .Frosted_Background {
-    -webkit-backdrop-filter: blur(100px);
-    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(14px) brightness(75%);
+    backdrop-filter: blur(14px) brightness(75%);
     mix-blend-mode: normal;
 }
 
@@ -16,4 +16,9 @@
     padding: auto;
     width: 90%;
     margin: 5%;
+}
+.frosted_background {
+    -webkit-backdrop-filter: blur(14px) brightness(75%);
+    backdrop-filter: blur(14px) brightness(75%);
+    mix-blend-mode: normal;
 }
