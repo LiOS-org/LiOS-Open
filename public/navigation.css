@@ -1,12 +1,14 @@
 /* Top Navigation */
 .navigation_container_top{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     position: sticky;
     align-items: left;
     border-radius: 5px;
+    text-align: center;
+    align-items: center;
 }
 .navigation_buttons{
     display: flex;
@@ -24,6 +26,9 @@
     position: sticky;
     align-items: left;
     border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
 }
 .navigation_buttons{
     display: flex;
