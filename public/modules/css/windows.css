@@ -1,10 +1,14 @@
-.lios-window{
+.lios-window-container{
     display: none;
 }
-.lios-window hr{
+.lios-window-container hr{
     margin: unset;
 }
-.lios-window:target{
+.lios-window{
+    display: block;
+    overflow: scroll;
+}
+.lios-window-container:target{
     display: flex;
     position: fixed;
     z-index: 1000;
@@ -12,28 +16,40 @@
     height: 80%;
     inset: 10%;
     border-radius: 5px;
+    flex-direction: column;
 }
 .lios-window-titlebar{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0%;
+}
+.lios-window-title{
+    height: 100%;
 }
 .lios-window-close{
     cursor: pointer;
     padding: 2px;
     border-top-right-radius: 5px;
+    height: 100%;
 }
 .lios-window-contents{
+    display: block;
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    overflow: scroll;
+    inset: 0;
 }
 .lios-window-container{
+    display: block;
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .lios-window-value-row{
     width: 95%;
@@ -43,6 +59,8 @@
     justify-content: space-between;
     border-radius: 5px;
     display: flex;
+    margin-top: 5px;
+    margin-bottom: 2px;
 }
 .lios-window-value-row .key{
     font-weight: bold;
