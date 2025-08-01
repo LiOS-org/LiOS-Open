@@ -17,7 +17,7 @@
   document.addEventListener("click", function (e) {
     const closeBtn = e.target.closest("[data-lios-window-close]");
     if (closeBtn) {
-      const win = closeBtn.closest(".lios-window");
+      const win = closeBtn.closest(".lios-window-container");
       closeLiOSWindow(win);
       e.preventDefault();
     }
