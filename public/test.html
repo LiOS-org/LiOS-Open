@@ -4,43 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="LiOS_Open.css">
+  <script src="modules/JS/windows.js"></script>
   <title>Test</title>
-  <style>
-    .mouse_cursor_gradient_tracking {
-        background: var(--0777bc);
-    }
-
-    .mouse_cursor_gradient_tracking::before {
-     background: radial-gradient(circle closest-side, pink, transparent 80%);
-    }
-
-    .mouse_cursor_gradient_tracking:hover::before {
-      opacity: 1;
-    }
-
-    .container {
-      display: flex;
-      height: 100vh;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="mouse_cursor_gradient_tracking frosted_background frosted_texture">
-      <span>hello</span>
+  <a href="#window">Open me</a>
+  <div class="lios-window frosted_background frosted_texture" id="window">
+    <div class="lios-window-titlebar">
+      <span class="lios-window-title">HelloWorld!</span><span class="lios-window-close" data-lios-window-close>X</span>
+    </div><hr>
+    <div class="lios-window-contents">
+      <div class="lios-window-header">Test Mode</div>
+      This is a test window.
+      <div class="lios-window-container frosted_background">
+        <div class="lios-window-container-title">Versioning info</div>
+        <div class="lios-window-value-row"><span class="key">Version</span><span class="value">testing</span></div>
+      </div>
     </div>
   </div>
-
-  <script>
-    document.querySelectorAll('.mouse_cursor_gradient_tracking').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        btn.style.setProperty('--x', `${e.clientX - rect.left}px`);
-        btn.style.setProperty('--y', `${e.clientY - rect.top}px`);
-      });
-    });
-  </script>
 </body>
 </html>

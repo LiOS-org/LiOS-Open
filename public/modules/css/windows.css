@@ -1,0 +1,63 @@
+.lios-window{
+    display: none;
+}
+.lios-window hr{
+    margin: unset;
+}
+.lios-window:target{
+    display: flex;
+    position: fixed;
+    background: var(--e6e8c5);
+    z-index: 1000;
+    width: 80%;
+    height: 80%;
+    inset: 10%;
+    border-radius: 5px;
+}
+.lios-window-titlebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lios-window-close{
+    cursor: pointer;
+    background: red;
+    padding: 2px;
+    border-top-right-radius: 5px;
+}
+.lios-window-contents{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    overflow: scroll;
+}
+.lios-window-container{
+    background: var(--ff7913);
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    border-radius: 5px;
+}
+.lios-window-value-row{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    justify-content: space-between;
+    border: 2px groove red;
+    border-radius: 5px;
+    display: flex;
+}
+.lios-window-value-row .key{
+    font-weight: bold;
+}
+.lios-window-header{
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+.lios-window-container-title{
+    color: white;
+    font-size: 24px;
+    margin-left: 2.5%;
+    margin-right: auto;
+}

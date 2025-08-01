@@ -1,0 +1,24 @@
+    .mouse_cursor_gradient_tracking {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .mouse_cursor_gradient_tracking::before {
+      content: '';
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle closest-side, var(--mouse_cursor_gradient_tracking), transparent 80%);
+      width: 200%;
+      height: 200%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .mouse_cursor_gradient_tracking:hover::before {
+      opacity: 1;
+    }
