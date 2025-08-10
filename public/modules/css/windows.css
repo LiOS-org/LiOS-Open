@@ -18,6 +18,15 @@
     border-radius: 5px;
     flex-direction: column;
 }
+@media screen and (max-width:400px) {
+    .lios-window-container:target{
+    z-index: 1000;
+    width: 95%;
+    height: 95%;
+    inset: 2.5%;
+    border-radius: 5px;
+}
+}
 .lios-window-titlebar{
     display: flex;
     justify-content: space-between;
@@ -38,7 +47,6 @@
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    inset: 0;
 }
 .lios-window-card{
     display: block;

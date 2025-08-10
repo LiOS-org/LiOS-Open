@@ -6,6 +6,7 @@
     --lios-button-background: var(--e3ded7);
     --lios-button-on-hover-background: red;
     --lios-fab-menu-background: var(--e3ded7);
+    --lios-segmented-button-border: 2px groove white;
 }
 .lios-button-group{
     --lios-button-background: var(--e3ded7);

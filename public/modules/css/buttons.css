@@ -136,4 +136,33 @@
     width: fit-content;
     align-self: flex-end;
     cursor: pointer;
+    text-decoration: none;
+    color: unset;
+}
+.lios-fab-menu-item:active{
+    animation: button-is-pressed 0.2s linear 1 forwards;
+}
+/* Segmented Buttons */
+.lios-segmented-button{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: var(--lios-segmented-button-border-radius,100vh);
+    background: var(--lios-button-group-background,transparent);
+    border: var(--lios-segmented-button-border);
+}
+.lios-segmented-button .lios-button{
+    padding: 5px;
+    border-left: var(--lios-segmented-button-border);
+    border-right: var(--lios-segmented-button-border);
+}
+.lios-segmented-button .lios-button:first-child{
+    border-top-left-radius: var(--lios-button-group-border-radius,100vh);
+    border-bottom-left-radius: var(--lios-button-group-border-radius,100vh);
+    border: none;
+}
+.lios-segmented-button .lios-button:last-child{
+    border-top-right-radius: var(--lios-button-group-border-radius,100vh);
+    border-bottom-right-radius: var(--lios-button-group-border-radius,100vh);
+    border: none;
 }
