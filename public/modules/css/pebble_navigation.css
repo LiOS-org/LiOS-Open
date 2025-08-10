@@ -1,0 +1,27 @@
+/* Header Navigation */
+.lios-header-nav{
+    display: flex;
+    position: fixed;
+    top: var(--lios-header-nav-position,2%);
+    background: var(--lios-header-nav-background);
+    border-radius: var(--lios-header-nav-radius,100vh);
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+.lios-header-nav a{
+    text-decoration: none;
+    color: unset;
+}
+.lios-nav-title{
+    margin-left: 10px;
+    margin-right: auto;
+    font-size: var(--lios-nav-title-font-size, 26px);
+}
+.lios-nav-contents{
+    align-items: center;
+    margin-right: 10px;
+    margin-left: auto;
+}
