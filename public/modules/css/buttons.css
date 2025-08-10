@@ -1,0 +1,100 @@
+/* Normal buttons */
+.lios-button{
+    all: unset;
+    display: inline-flex;
+    position: relative;
+    border: var(--lios-button-border-width,0) groove var(--lios-button-border-color);
+    text-align: center;
+    justify-content: center;
+    padding: var(--lios-button-padding, 5px);
+    border-radius: var(--lios-button-border-radius);
+    font-size: var(--lios-button-font-size);
+    background: var(--lios-button-background);
+    cursor: pointer;
+    overflow: hidden;
+}
+.lios-button::before{
+    content: "";
+    position: absolute;
+    background: var(--lios-button-on-hover-background);
+    height: 100%;
+    width: 100%;
+    left: -105%;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: -1;
+}
+.lios-button:active{
+    animation: button-is-pressed 0.2s linear 1 forwards;
+}
+@keyframes button-is-pressed{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0.9);
+    }
+}
+.lios-button:hover::before{
+    left: 0;
+    transition: all 0.2s ease-in-out;
+}
+/* Button Groups */
+.lios-button-group{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--lios-button-group-border-radius,100vh);
+    background: var(--lios-button-group-background,transparent);
+    padding: var(--lios-button-group-padding,2px);
+}
+.lios-button-group .lios-button{
+    padding: 5px;
+}
+.lios-button-group .lios-button:first-child{
+    border-top-left-radius: var(--lios-button-group-border-radius,100vh);
+    border-bottom-left-radius: var(--lios-button-group-border-radius,100vh);
+}
+.lios-button-group .lios-button:last-child{
+    border-top-right-radius: var(--lios-button-group-border-radius,100vh);
+    border-bottom-right-radius: var(--lios-button-group-border-radius,100vh);
+}
+/* Extended FAB & FAB */
+.lios-extended-fab,.lios-fab{
+    text-decoration: none;
+    position: fixed;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-radius: var(--lios-extended-fab-border-radius,5px);
+    padding: 15px;
+    font-size: var(--lios-extended-fab-font-size,22px);
+    background: var(--lios-extended-fab-background);
+    justify-content: space-between;
+    width: fit-content;
+    color: unset;
+    overflow: hidden;
+}
+.lios-extended-fab svg{
+    width: 1em;   /* same as the font size of surrounding text */
+    height: 1em;
+}
+.lios-extended-fab::before,.lios-fab::before{
+    content: "";
+    position: absolute;
+    background: var(--lios-button-on-hover-background);
+    height: 100%;
+    width: 100%;
+    left: -105%;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: -1;
+}
+.lios-extended-fab:hover::before,.lios-fab:hover::before{
+    left: 0;
+    transition: all 0.2s ease-in-out;
+}
+.lios-extended-fab:active,.lios-fab:active{
+    animation: button-is-pressed 0.2s linear 1 forwards;
+}
