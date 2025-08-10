@@ -12,6 +12,11 @@
     background: var(--lios-button-background);
     cursor: pointer;
     overflow: hidden;
+    z-index: 0;
+}
+.lios-button *{
+    position: relative;
+    z-index: 1;
 }
 .lios-button::before{
     content: "";
@@ -22,7 +27,7 @@
     left: -105%;
     top: 0;
     transition: all 0.2s ease-in-out;
-    z-index: -1;
+    z-index: 0;
 }
 .lios-button:active{
     animation: button-is-pressed 0.2s linear 1 forwards;
