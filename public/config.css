@@ -5,6 +5,7 @@
     --lios-button-border-radius: 2px;
     --lios-button-background: var(--e3ded7);
     --lios-button-on-hover-background: red;
+    --lios-fab-menu-background: var(--e3ded7);
 }
 .lios-button-group{
     --lios-button-background: var(--e3ded7);

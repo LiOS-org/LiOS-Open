@@ -103,3 +103,37 @@
 .lios-extended-fab:active,.lios-fab:active{
     animation: button-is-pressed 0.2s linear 1 forwards;
 }
+/* FAB menu */
+.lios-fab-menu-container{
+    display: flex;
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    flex-direction: column-reverse;
+    gap: 10px;
+    z-index: 10;
+    justify-content: flex-end;
+    width: max-content;
+}
+.lios-fab-menu-trigger{
+    background: var(--lios-fab-menu-background);
+    cursor: pointer;
+    border-radius: 100vh;
+    justify-items: center;
+    width: var(--lios-fab-menu-trigger-width, 24px);
+    height: var(--lios-fab-menu-trigger-height, 24px);
+    padding: var(--lios-fab-menu-padding, 12px 12px);
+    inset: 0;
+    align-self: flex-end;
+}
+.lios-fab-menu-item{
+    display: flex;
+    position: relative;
+    background: var(--lios-fab-menu-background);
+    border-radius: var(--lios-fab-menu-item-border-radius, 100vh);
+    padding: var(--lios-fab-menu-padding, 12px 12px);
+    right: 0;
+    width: fit-content;
+    align-self: flex-end;
+    cursor: pointer;
+}
