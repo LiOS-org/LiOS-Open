@@ -5,6 +5,7 @@
     top: var(--lios-header-nav-position,2%);
     background: var(--lios-header-nav-background);
     border-radius: var(--lios-header-nav-radius,100vh);
+    padding: var(--lios-header-nav-padding,10px);
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;

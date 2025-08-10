@@ -148,7 +148,7 @@
     flex-direction: row;
     align-items: center;
     border-radius: var(--lios-segmented-button-border-radius,100vh);
-    background: var(--lios-button-group-background,transparent);
+    background: var(--lios-segmented-button-background,--lios-button-group-background,transparent);
     border: var(--lios-segmented-button-border);
 }
 .lios-segmented-button .lios-button{
