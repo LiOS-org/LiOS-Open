@@ -27,7 +27,7 @@
   window.addEventListener("hashchange", function () {
     const id = location.hash.slice(1); // get the ID from hash
     const win = document.getElementById(id);
-    if (win && win.classList.contains("lios-window")) {
+    if (win && win.classList.contains("lios-window-container")) {
       // Reset display if opening again
       win.style.display = "block";
     }
@@ -37,7 +37,7 @@
   window.addEventListener("load", function () {
     const id = location.hash.slice(1);
     const win = document.getElementById(id);
-    if (win && win.classList.contains("lios-window")) {
+    if (win && win.classList.contains("lios-window-container")) {
       win.style.display = "block";
     }
   });
