@@ -33,14 +33,14 @@
     border-top-right-radius: 5px;
     height: 100%;
 }
-.lios-window-contents{
+.lios-card-contents{
     display: block;
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     inset: 0;
 }
-.lios-window-container{
+.lios-window-card{
     display: block;
     width: 95%;
     margin-left: 2.5%;
