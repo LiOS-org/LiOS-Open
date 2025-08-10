@@ -29,7 +29,7 @@
     const win = document.getElementById(id);
     if (win && win.classList.contains("lios-window-container")) {
       // Reset display if opening again
-      win.style.display = "block";
+      win.style.display = "flex";
     }
   });
 
@@ -38,7 +38,7 @@
     const id = location.hash.slice(1);
     const win = document.getElementById(id);
     if (win && win.classList.contains("lios-window-container")) {
-      win.style.display = "block";
+      win.style.display = "flex";
     }
   });
 })();
