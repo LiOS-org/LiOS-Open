@@ -1,7 +1,7 @@
 /* Header Navigation */
 .lios-header-nav{
     display: flex;
-    position: fixed;
+    position: sticky;
     top: var(--lios-header-nav-position,2%);
     background: var(--lios-header-nav-background);
     border-radius: var(--lios-header-nav-radius,100vh);

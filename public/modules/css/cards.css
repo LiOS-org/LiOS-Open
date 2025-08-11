@@ -1,0 +1,16 @@
+.lios-card-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-direction: var(--lios-card-container-direction, row);
+}
+.lios-card {
+  background: var(--lios-card-background);
+  border: var(--lios-card-border, unset);
+  border-radius: var(--lios-card-border-radius, 5px);
+  padding: 1rem;
+  box-shadow: var(--lios-card-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+  width: var(--lios-card-width, fit-content);
+  height: var(--lios-card-height, auto);
+  text-wrap: var(--lios-card-text-wrap, wrap);
+}

@@ -1,21 +1,25 @@
-:root{
-    background: linear-gradient(to left, red, orange);
-    --lios-button-border-width: none;
-    --lios-button-border-color: #73293b;
-    --lios-button-border-radius: 2px;
-    --lios-button-background: var(--e3ded7);
-    --lios-button-on-hover-background: red;
-    --lios-fab-menu-background: var(--e3ded7);
-    --lios-segmented-button-border: 2px groove white;
-    --lios-header-nav-background: var(--e3ded7);
+:root {
+  background: linear-gradient(to left, red, orange);
+  --lios-button-border-width: none;
+  --lios-button-border-color: #73293b;
+  --lios-button-border-radius: 2px;
+  --lios-button-background: var(--e3ded7);
+  --lios-button-on-hover-background: red;
+  --lios-fab-menu-background: var(--e3ded7);
+  --lios-segmented-button-border: 2px groove white;
+  --lios-header-nav-background: var(--e3ded7);
 }
-.lios-button-group{
-    --lios-button-background: var(--e3ded7);
-    --lios-button-border-width: 2px;
-    --lios-button-border-color: none;
-    --lios-button-group-background: none;
+.lios-button-group {
+  --lios-button-background: var(--e3ded7);
+  --lios-button-border-width: 2px;
+  --lios-button-border-color: none;
+  --lios-button-group-background: none;
 }
-.lios-extended-fab,.lios-fab{
-    --lios-extended-fab-background: var(--e3ded7);
-    --lios-button-on-hover-background: #ff2266;
+.lios-extended-fab,
+.lios-fab {
+  --lios-extended-fab-background: var(--e3ded7);
+  --lios-button-on-hover-background: #ff2266;
+}
+.lios-card-container {
+  --lios-card-background: var(--e3ded7);
 }
