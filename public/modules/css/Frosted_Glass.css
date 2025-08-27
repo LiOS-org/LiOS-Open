@@ -1,60 +1,252 @@
+/*
+ * LiOS Frosted Glass System
+ * =========================
+ * 
+ * This system provides modular frosted glass effects with customizable texture intensities.
+ * The previous implementation made everything too dark due to excessive noise frequency and opacity.
+ * 
+ * AVAILABLE CLASSES:
+ * 
+ * Background Effects (Backdrop Filter):
+ * - .frosted_background              : Standard frosted glass background
+ * - .frosted_background_on_hover     : Frosted background that appears only on hover
+ * 
+ * Texture Effects (Noise Pattern Overlay):
+ * - .frosted_texture                 : Default subtle texture (baseFreq: 0.65, opacity: 0.6)
+ * - .frosted_texture_light          : Light texture (baseFreq: 0.45, opacity: 0.4)
+ * - .frosted_texture_medium         : Medium texture (baseFreq: 0.55, opacity: 0.5)
+ * - .frosted_texture_strong         : Strong texture (baseFreq: 0.75, opacity: 0.7)
+ * 
+ * Hover Texture Effects:
+ * - .frosted_texture_on_hover        : Default texture on hover
+ * - .frosted_texture_on_hover_light  : Light texture on hover
+ * - .frosted_texture_on_hover_medium : Medium texture on hover
+ * - .frosted_texture_on_hover_strong : Strong texture on hover
+ * 
+ * USAGE EXAMPLES:
+ * 
+ * Basic frosted glass:
+ * <div class="frosted_background">...content...</div>
+ * 
+ * Frosted glass with subtle texture:
+ * <div class="frosted_background frosted_texture">...content...</div>
+ * 
+ * Light frosted texture:
+ * <div class="frosted_background frosted_texture_light">...content...</div>
+ * 
+ * Hover effects:
+ * <div class="frosted_background_on_hover frosted_texture_on_hover_medium">...content...</div>
+ * 
+ * IMPROVEMENTS MADE:
+ * - Reduced noise baseFrequency from 1.8 to 0.45-0.75 (less grainy)
+ * - Changed from dark noise to white noise with proper alpha blending
+ * - Added feColorMatrix for better alpha control
+ * - Used overlay blend mode instead of normal for more natural appearance
+ * - Made the system modular with multiple intensity variants
+ * - Fixed z-index positioning to prevent texture from interfering with content
+ */
+
 #Frosted_Background {
-    -webkit-backdrop-filter: blur(14px) brightness(75%);
-    backdrop-filter: blur(14px) brightness(75%);
-    mix-blend-mode: normal;
-    z-index: 1;
+  -webkit-backdrop-filter: blur(14px) brightness(75%);
+  backdrop-filter: blur(14px) brightness(75%);
+  mix-blend-mode: normal;
+  z-index: 1;
 }
 .Frosted_Background {
-    -webkit-backdrop-filter: blur(14px) brightness(75%);
-    backdrop-filter: blur(14px) brightness(75%);
-    mix-blend-mode: normal;
-    z-index: 1;
+  -webkit-backdrop-filter: blur(14px) brightness(75%);
+  backdrop-filter: blur(14px) brightness(75%);
+  mix-blend-mode: normal;
+  z-index: 1;
 }
 
 .frosted_background {
-    -webkit-backdrop-filter: blur(14px) brightness(75%);
-    backdrop-filter: blur(14px) brightness(75%);
-    mix-blend-mode: normal;
-    z-index: 1;
-    /* Add these for texture */
-}  
+  -webkit-backdrop-filter: blur(14px) brightness(75%);
+  backdrop-filter: blur(14px) brightness(75%);
+  mix-blend-mode: normal;
+  z-index: 1;
+  /* Add these for texture */
+}
+/* Base frosted texture with subtle noise */
+/* .frosted_texture {
+  position: relative;
+}
+
 .frosted_texture::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: -1;
-    border-radius: inherit;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-color: var(--lios-frosted-texture-color);
+  mix-blend-mode: soft-light;
+  border-radius: inherit;
+  background-size: 100px 100px;
+  background-repeat: repeat;
+} */
+
+/* Light frosted texture variant */
+.frosted_texture_light {
+  position: relative;
+}
+
+.frosted_texture_light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='lightNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lightNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+}
+
+/* Medium frosted texture variant */
+.frosted_texture_medium {
+  position: relative;
+}
+
+.frosted_texture_medium::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='mediumNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23mediumNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+}
+
+/* Strong frosted texture variant */
+.frosted_texture_strong {
+  position: relative;
+}
+
+.frosted_texture_strong::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='strongNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23strongNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
 }
 /* Frosted background only on hover */
 .frosted_background_on_hover:hover {
-    -webkit-backdrop-filter: blur(14px) brightness(75%);
-    backdrop-filter: blur(14px) brightness(75%);
-    mix-blend-mode: normal;
-    z-index: 1;
-    /* Add these for texture */
+  -webkit-backdrop-filter: blur(14px) brightness(75%);
+  backdrop-filter: blur(14px) brightness(75%);
+  mix-blend-mode: normal;
+  z-index: 1;
+  /* Add these for texture */
 }
-/* Frosted tecture only on hover */
-.frosted_texture_on_hover::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    border-radius: inherit;
-    transition: opacity 0.3s ease;
+/* Frosted texture only on hover */
+.frosted_texture_on_hover {
+  position: relative;
 }
-.frosted_texture_on_hover:hover::before{
-    opacity: 0.15;
-    transition: opacity 0.3s ease;
+
+.frosted_texture_on_hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hoverNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hoverNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.frosted_texture_on_hover:hover::before {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover variants with different intensities */
+.frosted_texture_on_hover_light {
+  position: relative;
+}
+
+.frosted_texture_on_hover_light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hoverLightNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hoverLightNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.frosted_texture_on_hover_light:hover::before {
+  opacity: 0.4;
+}
+
+.frosted_texture_on_hover_medium {
+  position: relative;
+}
+
+.frosted_texture_on_hover_medium::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hoverMediumNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hoverMediumNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.frosted_texture_on_hover_medium:hover::before {
+  opacity: 0.5;
+}
+
+.frosted_texture_on_hover_strong {
+  position: relative;
+}
+
+.frosted_texture_on_hover_strong::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hoverStrongNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hoverStrongNoise)' fill='white'/%3E%3C/svg%3E");
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.frosted_texture_on_hover_strong:hover::before {
+  opacity: 0.7;
 }

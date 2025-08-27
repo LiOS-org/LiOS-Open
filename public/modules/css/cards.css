@@ -14,3 +14,7 @@
   height: var(--lios-card-height, auto);
   text-wrap: var(--lios-card-text-wrap, wrap);
 }
+.lios-card-title{
+  text-align: center;
+  font-size: xx-large;
+}
