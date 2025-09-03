@@ -8,7 +8,7 @@
   background: var(--lios-card-background);
   border: var(--lios-card-border, unset);
   border-radius: var(--lios-card-border-radius, 5px);
-  padding: 1rem;
+  padding: var(--lios-card-padding, 1rem);
   box-shadow: var(--lios-card-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
   width: var(--lios-card-width, fit-content);
   height: var(--lios-card-height, auto);
