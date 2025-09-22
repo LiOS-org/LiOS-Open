@@ -166,3 +166,30 @@
     border-bottom-right-radius: var(--lios-button-group-border-radius,100vh);
     border: none;
 }
+/* Action Button */
+.lios-action-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: var(--lios-action-button-background);
+    border-radius: var(--lios-action-button-border-radius,5px);
+    cursor: pointer;
+}
+.lios-action-button:hover:active{
+    animation: button-is-pressed 0.2s linear 1 forwards;
+}
+.lios-action-button:hover{
+    animation: action-button-hovered 0.4s ease-in-out 1 forwards;
+}
+@keyframes action-button-hovered{
+    0%{
+        box-shadow: 0 0 0  5px var(--lios-action-button-box-shadow);
+    }
+    50%{
+        box-shadow: 0 0 0  10px var(--lios-action-button-box-shadow);
+    }
+    100%{
+        box-shadow: 0 0 0  5px var(--lios-action-button-box-shadow);
+    }
+}
