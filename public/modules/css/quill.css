@@ -8,13 +8,17 @@
  * Modified for LiOS-org
  * Retains original License
  */
+
 .ql-container {
-  box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
-  height: 100%;
+  height: var(--ql-container-height);
   margin: 0;
   position: relative;
+  margin-top: 10px;
+  background: var(--frosted_white);
+  border-radius: 15px;
+
 }
 .ql-container.ql-disabled .ql-tooltip {
   visibility: hidden;
@@ -35,7 +39,6 @@
   padding: 0;
 }
 .ql-editor {
-  box-sizing: border-box;
   counter-reset: list-0 list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8
     list-9;
   line-height: 1.42;
@@ -48,6 +51,8 @@
   text-align: left;
   white-space: pre-wrap;
   word-wrap: break-word;
+  border: none;
+  border-radius: 15px;
 }
 .ql-editor > * {
   cursor: text;
@@ -748,12 +753,12 @@
 .ql-snow .ql-picker {
   color: #444;
   display: inline-block;
-  float: left;
   font-size: 14px;
   font-weight: 500;
   height: 24px;
   position: relative;
   vertical-align: middle;
+  z-index: 10;
 }
 .ql-snow .ql-picker-label {
   cursor: pointer;
@@ -769,12 +774,15 @@
   line-height: 22px;
 }
 .ql-snow .ql-picker-options {
-  background-color: #fff;
+  background: var(--frosted_white);
   display: none;
   min-width: 100%;
   padding: 4px 8px;
   position: absolute;
   white-space: nowrap;
+  outline: none;
+  border-radius: 15px;
+  transform: translateY(15px);
 }
 .ql-snow .ql-picker-options .ql-picker-item {
   cursor: pointer;
@@ -975,10 +983,13 @@
   top: 5px;
 }
 .ql-toolbar.ql-snow {
-  border: 1px solid #ccc;
+  border-radius: 100vh;
+  background: var(--frosted_white);
   box-sizing: border-box;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   padding: 8px;
+  display: flex;
+  align-items: center;
 }
 .ql-toolbar.ql-snow .ql-formats {
   margin-right: 15px;
@@ -993,9 +1004,9 @@
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
   border-color: #ccc;
 }
-.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+/* .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
   border-color: #ccc;
-}
+} */
 .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,
 .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover {
   border-color: #000;
@@ -1004,12 +1015,12 @@
   border-top: 0;
 }
 .ql-snow .ql-tooltip {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px #ddd;
-  color: #444;
+  background: var(--frosted_white);
+  color: var(--black);
   padding: 5px 12px;
   white-space: nowrap;
+  border-radius: 15px;
+  z-index: 20;
 }
 .ql-snow .ql-tooltip::before {
   content: "Visit URL:";
@@ -1068,9 +1079,6 @@
 }
 .ql-snow a {
   color: #06c;
-}
-.ql-container.ql-snow {
-  border: 1px solid #ccc;
 }
 
 /*# sourceMappingURL=quill.snow.css.map*/
