@@ -51,11 +51,14 @@
   },
   "homepage": "https://github.com/meodai/color-names#readme",
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@eslint/json": "^0.13.2",
     "closestvector": "^0.6.0",
     "color-name-lists": "^3.2.0",
     "commitizen": "^4.2.4",
-    "eslint": "^8.16.0",
+    "eslint": "^8.57.1",
     "eslint-config-google": "^0.10.0",
+    "globals": "^16.4.0",
     "husky": "^9.1.6",
     "seedrandom": "^3.0.5",
     "semantic-release": "^24.2.0"
