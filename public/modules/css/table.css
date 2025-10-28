@@ -1,0 +1,61 @@
+.lios-table{
+    display: flex;
+    flex-direction: column;
+    --abstracted-lios-table-cell-gap:var(--lios-table-cell-gap,5px);
+    --abstracted-lios-table-padding:var(--lios-table-padding,12px);
+    --abstracted-lios-table-border:var(--lios-table-border,2px solid white);
+    padding: var(--abstracted-lios-table-padding);
+    gap: 15px;
+    text-align: center;
+    align-items: center;
+    border-radius: 15px;
+}
+.lios-table .lios-table-header{
+    display: flex;
+    flex-direction: row;
+    background: var(--lios-table-header-background);
+    border-radius: inherit;
+    width: 100%;
+}
+.lios-table .lios-table-contents{
+    display: flex;
+    flex-direction: column;
+    gap: var(--abstracted-lios-table-cell-gap);
+    background: var(--lios-table-cell-background);
+    width: 100%;
+    border-radius: inherit;
+}
+.lios-table .lios-table-contents .lios-table-row{
+    display: flex;
+    flex-direction: row;
+    border-radius: inherit;
+}
+.lios-table .lios-table-header >* ,.lios-table .lios-table-contents .lios-table-row>*{
+    flex: 1;
+    overflow: scroll;
+    display: flex;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: var(--abstracted-lios-table-padding);
+    border-right: var(--abstracted-lios-table-border);
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+.lios-table .lios-table-header >*:last-child ,.lios-table .lios-table-contents .lios-table-row>*:last-child{
+    border:none;
+}
+.lios-table .lios-table-header >div:hover ,.lios-table .lios-table-contents .lios-table-row>div:hover{
+    background: var(--lios-table-cell-hover-background);
+    transition: all 0.4s ease-in-out;
+}
+.lios-table .lios-table-header >*:first-child ,.lios-table .lios-table-contents .lios-table-row>*:first-child{
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
+.lios-table .lios-table-header >*:last-child ,.lios-table .lios-table-contents .lios-table-row>*:last-child{
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
