@@ -10,6 +10,9 @@
   --lios-header-nav-background: var(--e3ded7);
   --lios-frosted-texture-color: red;
   --lios-pop-up-background:var(--e3ded7);
+  --lios-table-header-background:var(--351e1c);
+  --lios-table-cell-background:var(--e3ded7);
+  --lios-table-cell-hover-background:var(--e3ded7);
 }
 .lios-button-group {
   --lios-button-background: var(--e3ded7);
@@ -24,4 +27,7 @@
 }
 .lios-card-container {
   --lios-card-background: var(--e3ded7);
+}
+.lios-table{
+  font-size: 22px;
 }
