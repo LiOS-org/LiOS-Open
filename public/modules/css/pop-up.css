@@ -4,15 +4,19 @@
     align-self: center;
     left: 50%;
     right: 50%;
+    top:50%;
+    bottom:50%;
+    transform: translate(50% -50%);
     justify-self: center;
     display: none;
-    z-index: 89;
+    z-index: 1000;
     padding: 12px;
     border-radius: var(--lios-pop-up-radius,15px);
     width: var(--lios-pop-up-width,70%);
     background: var(--lios-pop-up-background);
     transition: all 0.4s ease-in-out;
     box-shadow: var(--lios-pop-up-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+    flex-direction: column;
 }
 .lios-pop-up.pop-up-is-opening{
     animation: LiOS-Open-Popup-Open 0.1s linear 1 forwards;
