@@ -35,9 +35,8 @@
     overflow: scroll;
     display: flex;
     box-sizing: border-box;
-    text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: var(--abstracted-lios-table-padding);
     border-right: var(--abstracted-lios-table-border);
     cursor: pointer;
@@ -49,6 +48,7 @@
 .lios-table .lios-table-header >div:hover ,.lios-table .lios-table-contents .lios-table-row>div:hover{
     background: var(--lios-table-cell-hover-background);
     transition: all 0.4s ease-in-out;
+    z-index: 5;
 }
 .lios-table .lios-table-header >*:first-child ,.lios-table .lios-table-contents .lios-table-row>*:first-child{
     border-top-left-radius: inherit;
