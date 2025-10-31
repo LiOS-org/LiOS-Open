@@ -22,35 +22,13 @@
       transform: translate3d(0, -16px, 0);
     }
   }
-.lios-loader-3 div:first-child{
-  display: flex;
-  position: relative;
-  width: 5px;
-  height: 5px;
-  border-radius: 100vh;
-  background: white;
-}
-@keyframes loader-1-animation {
-  to 100%{
-    transform: rotate(180deg);
-  }
-}
-.lios-loader-3 div:last-child{
-  display: flex;
-  position: relative;
-  width: calc(100% - 10px);
-  height: calc(100% - 10px);
-  justify-self: center;
-  align-self: center;
-  background: black;
-}
 /* Loader 3 */
 .lios-loader-3{
   display: flex;
   height: 50px;
   width: 50px;
-  background: var(--e3ded7);
-  border: 5px solid black;
+  background: var(--lios-loader-3-track-color,transparent);
+  border: 5px solid var(--lios-loader-3-container-color);
   overflow: hidden;
   transform: rotate(45deg);
 }
@@ -59,34 +37,34 @@
   position: relative;
   width: 5px;
   height: 5px;
-  background: white;
+  background: var(--lios-loader-3-cube-color);
   animation: loader-3-animation 2.5s linear infinite;
 }
 @keyframes loader-3-animation {
   0%{
     left: 0%;
     top: 0%;
-    box-shadow: -10px -10px 5px 15px red;
+    box-shadow: -10px -10px 5px 15px var(--lios-loader-3-trail-color);
   }
   25%{
     left: calc(100% - 5px);
     top: 0%;
-    box-shadow: -10px -10px 5px 15px red;
+    box-shadow: -10px -10px 5px 15px var(--lios-loader-3-trail-color);
   }
   50%{
     left: calc(100% - 5px);
     top: calc(100% - 5px);
-    box-shadow: 10px -10px 5px 15px red;
+    box-shadow: 10px -10px 5px 15px var(--lios-loader-3-trail-color);
   }
   75%{
     left: 0%;
     top: calc(100% - 5px);
-    box-shadow: 10px 10px 5px 15px red;
+    box-shadow: 10px 10px 5px 15px var(--lios-loader-3-trail-color);
   }
   100% {
     left: 0%;
     top: 0%;
-    box-shadow: -10px 10px 5px 15px red;
+    box-shadow: -10px 10px 5px 15px var(--lios-loader-3-trail-color);
   }
 }
 .lios-loader-3 div:last-child{
@@ -96,5 +74,5 @@
   height: calc(100% - 10px);
   justify-self: center;
   align-self: center;
-  background: black;
+  background: var(--lios-loader-3-container-color);
 }

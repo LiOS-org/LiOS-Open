@@ -13,6 +13,10 @@
   --lios-table-header-background:var(--351e1c);
   --lios-table-cell-background:var(--e3ded7);
   --lios-table-cell-hover-background:var(--e3ded7);
+  --lios-loader-3-container-color:black;
+  --lios-loader-3-cube-color:white;
+  --lios-loader-3-trail-color:red;
+  --lios-loader-3-track-color:var(--e3ded7);
 }
 .lios-button-group {
   --lios-button-background: var(--e3ded7);
