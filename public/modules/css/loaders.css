@@ -37,6 +37,7 @@
   position: relative;
   width: 5px;
   height: 5px;
+  border-radius: 100vh;
   background: var(--lios-loader-3-cube-color);
   animation: loader-3-animation 2.5s linear infinite;
 }
