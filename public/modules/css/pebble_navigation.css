@@ -26,3 +26,48 @@
     margin-right: 10px;
     margin-left: auto;
 }
+/* Header nav V2: Pebble navigation */
+.lios-header-nav-2{
+    display: flex;
+    position: sticky;
+    top: var(--lios-header-nav-2-position,2%);
+    background: transparent;
+    justify-content: space-between;
+    align-items: center;
+    --lios-inner-variable-size:var(--lios-header-nav-2-component-size, 48px);
+}
+.lios-header-nav-2-pebbles{
+    display: flex;
+    gap: 5px;
+    border-radius: 100vh;
+    padding: 4px;
+    background: var(--lios-header-nav-2-background);
+    align-items: center;
+}
+.lios-header-nav-2-pebble{
+    display: flex;
+    width: var(--lios-inner-variable-size);
+    height: var(--lios-inner-variable-size);
+    border-radius: 100vh;
+    justify-items: center;
+    align-self: center;
+    color: var(--lios-header-nav-2-color);
+    transition: all 0.3s, color 0.3s;
+    padding: 2px;
+}
+.lios-header-nav-2-pebble:hover{
+    background: var(--lios-header-nav-2-background);
+    color: var(--lios-header-nav-2-hover-color);
+    transition: all 0.3s, color 0.3s;
+}
+.lios-header-nav-2-pebble svg{
+    width: var(--lios-inner-variable-size);
+    height: var(--lios-inner-variable-size);
+}
+.lios-header-nav-2-branding{
+    display: flex;
+    border-radius: 100vh;
+    overflow: hidden;
+    padding: 4px;
+    background: var(--lios-header-nav-2-background);
+}
