@@ -6,7 +6,7 @@
 }
 .lios-window {
   display: block;
-  overflow: scroll;
+  overflow: auto;
 }
 .lios-window-container:target {
   display: flex;
