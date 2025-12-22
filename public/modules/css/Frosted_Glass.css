@@ -60,11 +60,18 @@
 }
 
 .frosted_background {
-  -webkit-backdrop-filter: blur(14px) brightness(75%);
-  backdrop-filter: blur(14px) brightness(75%);
+  -webkit-backdrop-filter: blur(40px) saturate(1);
+  backdrop-filter: blur(40px) saturate(1);
   mix-blend-mode: normal;
   z-index: 1;
   /* Add these for texture */
+}
+.lios-frosted-glass{
+  -webkit-backdrop-filter: blur(40px) saturate(1);
+  backdrop-filter: blur(40px) saturate(1);
+  mix-blend-mode: normal;
+  z-index: 1;
+  background: var(--lios-frosted-glass-background,#0000000d);
 }
 /* Base frosted texture with subtle noise */
 /* .frosted_texture {
