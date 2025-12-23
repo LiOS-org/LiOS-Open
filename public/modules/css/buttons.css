@@ -175,6 +175,7 @@
     background: var(--lios-action-button-background);
     border-radius: var(--lios-action-button-border-radius,5px);
     cursor: pointer;
+    border: 2px outset var(--lios-action-button-background);
 }
 .lios-action-button:hover:active{
     animation: button-is-pressed 0.2s linear 1 forwards;
