@@ -1,44 +1,90 @@
-// Initialize LiOS-Open window system
-(function () {
-  function closeLiOSWindow(windowEl) {
-    if (windowEl) {
-      // Optional: remove an "active" class if you're using it
-      windowEl.classList.remove("active");
+export const  constructWindow = {};
 
-      // Hide the element manually (for when :target is removed)
-      windowEl.style.display = "none";
+constructWindow.new = async () => {
+  const windowContainer = document.createElement("div");
+  const windowUid = "lios-window-" + crypto.randomUUID();
+  windowContainer.classList.add("lios-window-container", windowUid);
 
-      // Remove the hash from the URL to deactivate :target
-      history.pushState("", document.title, window.location.pathname + window.location.search);
+
+  const enableDrag = (titlebar, container) => {
+    let isDragging = false;
+    let offsetX, offsetY = 0;
+
+    titlebar.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      const rect = container.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+
+      document.body.style.userselect = "none";
+
+    });
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      container.style.left = `${e.clientX - offsetX}px`;
+      container.style.top = `${e.clientY - offsetY}px`;
+    });
+    
+    document.addEventListener("mouseup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      document.body.style.userselect = "unset";
+    });
+  };
+
+  const close = () => {
+    windowContainer.remove();
+    history.replaceState(null, "", window.location.pathname);
+  };
+  return {
+    setId: (id) => {
+      windowContainer.id = id;
+    },
+    setTitle: (Title) => {
+      const windowTitle = document.createElement("div");
+      windowTitle.innerHTML = //html
+        `
+        <div class="lios-window-titlebar">
+          <span class="lios-window-title">${Title}</span>
+          <span class="lios-window-close">X</span>
+        </div>
+        <hr>
+      `;
+      const closeButton = windowTitle.querySelector(".lios-window-close");
+      closeButton.addEventListener("click", close);
+      windowContainer.appendChild(windowTitle);
+      const titleBar = windowTitle.querySelector(".lios-window-titlebar");
+      enableDrag(titleBar, windowContainer);
+    },
+    setContents: (content) => {
+      const windowContentWrapper = document.createElement("div");
+      windowContentWrapper.classList.add("lios-window");
+      const windowContent = document.createElement("div");
+      windowContent.classList.add("lios-window-contents");
+      windowContent.innerHTML = content;
+      windowContentWrapper.appendChild(windowContent);
+      windowContainer.appendChild(windowContentWrapper);
+    },
+    applyEffect: {
+      frostedGlass: () => {
+        windowContainer.classList.add("lios-frosted-glass");
+      }
+    },
+    removeEffect: {
+      frostedGlass: () => {
+        windowContainer.classList.remove("lios-frosted-glass")
+      }
+    },
+    close,
+    open: () => {
+      document.body.appendChild(windowContainer);
+      const thisWindow = document.querySelector(`.${windowUid}`);
+      windowContainer.style.height = "var(--default-height)";
+      windowContainer.style.width = "var(--default-width)";
+      windowContainer.style.inset = "var(--default-inset)";
+      windowContainer.style.display = "flex";
+      window.location.href = `#${windowContainer.id}`;
     }
-  }
-
-  // 1. Close button logic
-  document.addEventListener("click", function (e) {
-    const closeBtn = e.target.closest("[data-lios-window-close]");
-    if (closeBtn) {
-      const win = closeBtn.closest(".lios-window-container");
-      closeLiOSWindow(win);
-      e.preventDefault();
-    }
-  });
-
-  // 2. hashchange — restore display when :target is used again
-  window.addEventListener("hashchange", function () {
-    const id = location.hash.slice(1); // get the ID from hash
-    const win = document.getElementById(id);
-    if (win && win.classList.contains("lios-window-container")) {
-      // Reset display if opening again
-      win.style.display = "flex";
-    }
-  });
-
-  // 3. On initial load: if there's a :target, show it
-  window.addEventListener("load", function () {
-    const id = location.hash.slice(1);
-    const win = document.getElementById(id);
-    if (win && win.classList.contains("lios-window-container")) {
-      win.style.display = "flex";
-    }
-  });
-})();
+  };
+};
