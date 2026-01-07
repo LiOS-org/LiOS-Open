@@ -32,7 +32,15 @@ constructWindow.new = async () => {
       document.body.style.userselect = "unset";
     });
   };
-
+  const open = () => {
+    document.body.appendChild(windowContainer);
+    const thisWindow = document.querySelector(`.${windowUid}`);
+    windowContainer.style.height = "var(--default-height)";
+    windowContainer.style.width = "var(--default-width)";
+    windowContainer.style.inset = "var(--default-inset)";
+    windowContainer.style.display = "flex";
+    window.location.href = `#${windowContainer.id}`;
+  };
   const close = () => {
     windowContainer.remove();
     history.replaceState(null, "", window.location.pathname);
@@ -77,14 +85,9 @@ constructWindow.new = async () => {
       }
     },
     close,
-    open: () => {
-      document.body.appendChild(windowContainer);
-      const thisWindow = document.querySelector(`.${windowUid}`);
-      windowContainer.style.height = "var(--default-height)";
-      windowContainer.style.width = "var(--default-width)";
-      windowContainer.style.inset = "var(--default-inset)";
-      windowContainer.style.display = "flex";
-      window.location.href = `#${windowContainer.id}`;
+    open,
+    selectTriggerButton: (triggerButtonSelector) => {
+      document.querySelector(triggerButtonSelector).addEventListener("click", open);
     }
   };
 };
