@@ -35,3 +35,6 @@
 .lios-table{
   font-size: 22px;
 }
+.lios-window-container{
+  background: var(--e3ded7);
+}

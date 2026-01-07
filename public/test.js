@@ -1,8 +1,12 @@
-import { liosPopup } from "./modules/JS/liosOpen.js";
+import { liosWindow } from "./modules/JS/liosOpen.js";
 
-document.querySelector(".open-pop-up").addEventListener("click", () => {
-    liosPopup("open", ".test-pop-up");
-});
-document.querySelector(".close-pop-up").addEventListener("click", () => {
-    liosPopup("close", ".test-pop-up");
+const testWindow = await liosWindow.new();
+testWindow.setId("Test-Window");
+testWindow.applyEffect.frostedGlass();
+testWindow.setTitle("Test Window");
+testWindow.setContents("<p>This is a test window.</p>");
+console.log(testWindow);
+
+document.querySelector(".test-window").addEventListener("click", () => {
+    testWindow.open();
 });

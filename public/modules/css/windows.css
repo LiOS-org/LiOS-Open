@@ -1,5 +1,19 @@
 .lios-window-container {
   display: none;
+  position: fixed;
+  z-index: 1000;
+  --default-width: 80%;
+  --default-height: 80%;
+  width: var(--default-width);
+  height: var(--default-height);
+  --default-inset:10%;
+  inset: var(--default-inset);
+  border-radius: 5px;
+  flex-direction: column;
+  min-height: 200px;
+  min-width: 300px;
+  resize: both;
+  overflow: auto;
 }
 .lios-window-container hr {
   margin: unset;
@@ -8,22 +22,14 @@
   display: block;
   overflow: auto;
 }
-.lios-window-container:target {
-  display: flex;
-  position: fixed;
-  z-index: 1000;
-  width: 80%;
-  height: 80%;
-  inset: 10%;
-  border-radius: 5px;
-  flex-direction: column;
-}
 @media screen and (max-width: 400px) {
-  .lios-window-container:target {
+  .lios-window-container {
     z-index: 1000;
-    width: 95%;
-    height: 95%;
-    inset: 2.5%;
+    --default-width: 95%;
+    --default-height: 95%;
+    width: var(--default-width);
+    height: var(--default-height);
+    --default-inset:2.5%;
     border-radius: 5px;
   }
 }

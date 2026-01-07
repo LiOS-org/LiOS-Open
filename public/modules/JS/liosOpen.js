@@ -41,3 +41,4 @@ export async function constructLiosPopup(content, frosted) {
     element: popupContainer
   };
 };
+export { constructWindow as liosWindow } from "./windows.js";
