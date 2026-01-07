@@ -1,6 +1,5 @@
 .lios-card-container {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
   flex-direction: var(--lios-card-container-direction, row);
 }
