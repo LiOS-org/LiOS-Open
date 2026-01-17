@@ -69,3 +69,11 @@ node_modules/
 .dataconnect
 # es lint
 eslint.config.js
+# Firebase
+firebase.json
+.firebaserc
+# Test files
+test.css
+test.js
+test.html
+config.css
