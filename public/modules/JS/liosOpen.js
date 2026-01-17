@@ -42,3 +42,4 @@ export async function constructLiosPopup(content, frosted) {
   };
 };
 export { constructWindow as liosWindow } from "./windows.js";
+export {virtualDom as liosVirtualDom} from "./virtualDom.js"
