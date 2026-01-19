@@ -1,71 +1,15 @@
 export const virtualDom = {
-    new: async() => {
+    new: async () => {
+        let vDom = [];
         let dom;
+        let id;
+        let parent = vDom;
+        let classList = [];
         let domContent;
         let savedDomContent = {};
-        const vDom = [
-            {
-                tag: "nav",
-                props: {
-                    class: ["lios-header-nav-2", "lios-frosted-glass"]
-                },
-                children: [
-                    {
-                        tag: "div",
-                        props: {
-                            class: ["lios-header-nav-2-branding"]
-                        },
-                        children: [
-                            {
-                                tag: "img",
-                                props: {
-                                    src: "imageUrl",
-                                    alt: "its alt"
-                                },
-                                children: []
-                            }
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        props: {
-                            class: ["lios-header-nav-2-buttons"]
-                        },
-                        children: [
-                            {
-                                tag: "div",
-                                props: {
-                                    class: ["lios-header-nav-2-button"]
-                                },
-                                children: [
-                                    {
-                                        tag: "span",
-                                        props: {},
-                                        children: ["Products"]
-                                    },
-                                    {
-                                        tag: "span",
-                                        props: {},
-                                        children: [
-                                            {
-                                                tag: "svg",
-                                                props: {
-                                                    /* svg attributes */
-                                                },
-                                                children: []
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ];
         const generateRandomUid = async () => {
-            const crypto = crypto.randomUUID();
-            const randomUid = `virtualDom-${crypto}`;
+            const cryptoUid = crypto.randomUUID();
+            const randomUid = `virtualDom-${cryptoUid}`;
             return randomUid;
         };
         const saveDom = async (node) => {
@@ -76,63 +20,123 @@ export const virtualDom = {
             };
             return randomId;
         };
+        const appendTo = (parent, node) => {
+            if (parent === "root") {
+                vDom.push(node);
+                return;
+            };
+            if (parent && parent.__node__) {
+                parent.__node__.children.push(node);
+                return;
+            };
+        };
+        const newChild = async (tag) => {
+            const node = {};
+            node.children = [];
+            node.tag = tag;
+            node.props = {
+                class: [],
+                id: "",
+                attributes: {}
+            };
+            const chidrenMethods = {
+                classList: (classList) => {
+                    classList.forEach(className => {
+                        node.props.class.push(className);
+                    });
+                },
+                id: (id) => {
+                    node.props.id = id;
+                },
+                attributes: (attributes) => {
+                    Object.entries(attributes).forEach(([key, value]) => {
+                        if (value === undefined || value === null) {
+                            return;
+                        };
+                        if (typeof value === "object") {
+                            node.props.attributes[key] = JSON.stringify(value);
+                        } else {
+                            node.props.attributes[key] = String(value);
+                        }
+                    })
+                },
+                textContent: (text) => {
+                    node.textContent = text;
+                },
+                appendTo: (parent) => appendTo(parent, node),
+                __node__: node
+            };
+            return chidrenMethods;
+        };
+        const renderNode = (node) => {
+            const el = document.createElement(node.tag);
+
+            // classes
+            if (node.props.class.length > 0) {
+                node.props.class.forEach(className => {
+                    el.classList.add(className);
+                });
+            }
+
+            // id
+            if (node.props.id.length > 0) {
+                el.id = node.props.id;
+            }
+
+            // attributes
+            if (node.props.attributes) {
+                Object.entries(node.props.attributes).forEach(([key, value]) => {
+                    el.setAttribute(key, value);
+                });
+            }
+
+            // text
+            if (typeof node.textContent === "string") {
+                el.textContent = node.textContent;
+            }
+
+            // 🔑 render children recursively
+            if (node.children && node.children.length > 0) {
+                node.children.forEach(childNode => {
+                    el.appendChild(renderNode(childNode));
+                });
+            }
+
+            return el;
+        };
         return {
             select: (domSelector) => {
                 dom = document.querySelector(domSelector);
             },
-            replace: async (replacerNode, node) => {
-                const cloneNode = node.cloneNode(true)
-                await saveDom(cloneNode);
-                if (!node) {
-                    let savedClassList;
-                    let savedId;
-                    if (dom.classList) {
-                        savedClassList = [dom.classList];
-                    };
-                    if (dom.Id) {
-                        savedId = domContent.id;
-                    };
-                    dom.parentNode.dom.replace(dom,replacerNode);
-                } else {
-                    dom.replace(node, replacerNode);
-                };
+            newChild,
+            classList: (classListArray) => {
+                classListArray.forEach(className => {
+                    classList.push(className);
+                });
             },
-            saveDom,
-            newNode: async (type, classList = [], id) => {
-                const nodeId = await generateRandomUid();
-                const node = {
-                    type: type,
-                    props: {
-                        classList: classList,
-                        id: id
-                    },
-                    nodeId: nodeId
+            id: (idString) => {
+                id = idString;
+            },
+            render: () => {
+                const newNode = document.createElement("div");
 
-                };
-                return { node };
-            },
-            render: (node, location)=>{
-                newVnode = document.createElement(node.type);
-                if (node.props.classList.length > 0) {
-                    node.props.classList.forEach(className => {
-                        newVnode.classList.add(className);
+                if (id.length > 0) {
+                    newNode.id = id;
+                }
+
+                if (classList.length > 0) {
+                    classList.forEach(className => {
+                        newNode.classList.add(className);
                     });
-                };
-                if (node.props.id) {
-                    newVnode.id = node.props.id;
-                };
-                if (location) {
-                    location.appendChild(newVnode);
-                } else {
-                    dom.appendChild(newVnode);
-                };
-            },
-            applyState: async (stateId)=>{
-                const savedNode = savedDomContent[stateId];
-                dom.parentNode.replace(savedNode.content);
-                await saveDom(savedNode.content);
+                }
+
+                // 🔑 render root-level nodes
+                vDom.forEach(node => {
+                    newNode.appendChild(renderNode(node));
+                });
+
+                dom.replaceWith(newNode);
             }
         };
-
     }
 };
