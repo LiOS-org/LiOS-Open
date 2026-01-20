@@ -1,6 +1,7 @@
 export const virtualDom = {
-    new: async () => {
+    new: async (tag = "div") => {
         let vDom = [];
+        let containerTag = tag;
         let dom;
         let id;
         let parent = vDom;
@@ -30,7 +31,7 @@ export const virtualDom = {
                 return;
             };
         };
-        const newChild = async (tag) => {
+        const newChild = async (tag = "div") => {
             const node = {};
             node.children = [];
             node.tag = tag;
@@ -39,7 +40,7 @@ export const virtualDom = {
                 id: "",
                 attributes: {}
             };
-            const chidrenMethods = {
+            const childrenMethods = {
                 classList: (classList) => {
                     classList.forEach(className => {
                         node.props.class.push(className);
@@ -66,7 +67,7 @@ export const virtualDom = {
                 appendTo: (parent) => appendTo(parent, node),
                 __node__: node
             };
-            return chidrenMethods;
+            return childrenMethods;
         };
         const renderNode = (node) => {
             const el = document.createElement(node.tag);
@@ -118,7 +119,7 @@ export const virtualDom = {
                 id = idString;
             },
             render: () => {
-                const newNode = document.createElement("div");
+                const newNode = document.createElement(containerTag);
 
                 if (id.length > 0) {
                     newNode.id = id;
@@ -130,7 +131,6 @@ export const virtualDom = {
                     });
                 }
 
-                // 🔑 render root-level nodes
                 vDom.forEach(node => {
                     newNode.appendChild(renderNode(node));
                 });
