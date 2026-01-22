@@ -4,36 +4,31 @@ export const virtualDom = {
         let containerTag = tag;
         let dom;
         let id;
-        let parent = vDom;
         let classList = [];
-        let domContent;
-        let savedDomContent = {};
+        let multiState = {};
         const generateRandomUid = async () => {
             const cryptoUid = crypto.randomUUID();
             const randomUid = `virtualDom-${cryptoUid}`;
             return randomUid;
         };
-        const saveDom = async (node) => {
-            const randomId = await generateRandomUid();
-            savedDomContent[randomId] = {
-                id: randomId,
-                content: node
-            };
-            return randomId;
-        };
         const appendTo = (parent, node) => {
+            const targetVDom = node.__state__
+                ? multiState[node.__state__].vDom
+                : vDom;
+
             if (parent === "root") {
-                vDom.push(node);
+                targetVDom.push(node);
                 return;
-            };
+            }
+
             if (parent && parent.__node__) {
                 parent.__node__.children.push(node);
-                return;
-            };
+            }
         };
-        const newChild = async (tag = "div") => {
+        const newChild = async (tag = "div",stateName) => {
             const node = {};
             node.children = [];
+            node.__state__ = stateName;
             node.tag = tag;
             node.props = {
                 class: [],
@@ -64,7 +59,7 @@ export const virtualDom = {
                 textContent: (text) => {
                     node.textContent = text;
                 },
-                appendTo: (parent) => appendTo(parent, node),
+                appendTo: (parent,stateName) => appendTo(parent, node,stateName),
                 __node__: node
             };
             return childrenMethods;
@@ -121,13 +116,13 @@ export const virtualDom = {
             render: () => {
                 const newNode = document.createElement(containerTag);
 
-                if (id.length > 0) {
-                    newNode.id = id;
+                if (id && id.length > 0) {
+                    dom.id = id;
                 }
 
-                if (classList.length > 0) {
+                if (classList && classList.length > 0) {
                     classList.forEach(className => {
-                        newNode.classList.add(className);
+                        dom.classList.add(className);
                     });
                 }
 
@@ -135,7 +130,30 @@ export const virtualDom = {
                     newNode.appendChild(renderNode(node));
                 });
 
-                dom.replaceWith(newNode);
+                dom.innerHTML = "";
+                dom.innerHTML = newNode.innerHTML;
+            },
+            enableMultiState: () => {
+                multiState.default = {
+                    vDom: vDom,
+                    tag:containerTag
+                };
+                return {
+                    newState: (stateName, tag = "div") => {
+                        const state = stateName;
+                        multiState[stateName] = {
+                            vDom: [],
+                            tag: tag
+                        };
+                        return {
+                            newChild: (tag = "div", stateName = state) => newChild(tag, stateName)
+                        }
+                    },
+                    switchState: async(stateName) => {
+                        vDom = multiState[stateName].vDom;
+                        containerTag = multiState[stateName].tag;
+                    }
+                };
             }
         };
     }
