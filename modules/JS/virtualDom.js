@@ -1,6 +1,14 @@
+import { attachEventListener, vDomEventListener } from "./virtualDom/eventListener.js";
+import { svgParser } from "./virtualDom/svgParser.js";
+// Global Variables
+let childrenMethods;
+// 
+
+// Virtual DOM Implementation
 export const virtualDom = {
     new: async (tag = "div") => {
         let vDom = [];
+    
         let containerTag = tag;
         let dom;
         let id;
@@ -25,18 +33,17 @@ export const virtualDom = {
                 parent.__node__.children.push(node);
             }
         };
-        const newChild = async (tag = "div",stateName) => {
+        const newChild = async (tag = "div") => {
             const node = {};
             node.children = [];
-            node.__state__ = stateName;
             node.tag = tag;
             node.props = {
                 class: [],
                 id: "",
                 attributes: {}
             };
-            const childrenMethods = {
-                classList: (classList) => {
+            childrenMethods = {
+                classList: (...classList) => {
                     classList.forEach(className => {
                         node.props.class.push(className);
                     });
@@ -59,13 +66,21 @@ export const virtualDom = {
                 textContent: (text) => {
                     node.textContent = text;
                 },
-                appendTo: (parent,stateName) => appendTo(parent, node,stateName),
+                appendTo: (parent, stateName) => appendTo(parent, node, stateName),
+                eventListner: {
+                    add:(type, handler) => vDomEventListener.attach(node,type,handler)
+                },
                 __node__: node
             };
             return childrenMethods;
         };
-        const renderNode = (node) => {
-            const el = document.createElement(node.tag);
+        const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
+        const renderNode = (node, isSvgTree = false) => {
+            const nodeTag = String(node.tag || "").toLowerCase();
+            const isCurrentSvgTree = isSvgTree || nodeTag === "svg";
+            const el = isCurrentSvgTree
+                ? document.createElementNS(SVG_NAMESPACE, node.tag)
+                : document.createElement(node.tag);
 
             // classes
             if (node.props.class.length > 0) {
@@ -94,9 +109,14 @@ export const virtualDom = {
             // 🔑 render children recursively
             if (node.children && node.children.length > 0) {
                 node.children.forEach(childNode => {
-                    el.appendChild(renderNode(childNode));
+                    el.appendChild(renderNode(childNode, isCurrentSvgTree));
                 });
             }
+            if (node.eventListners) {
+                for (const [type, handler] of Object.entries(node.eventListners)) {
+                    attachEventListener(el, type, handler);
+                };
+            };
 
             return el;
         };
@@ -105,7 +125,8 @@ export const virtualDom = {
                 dom = document.querySelector(domSelector);
             },
             newChild,
-            classList: (classListArray) => {
+            svgParser: (svg) => svgParser(svg, appendTo),
+            classList: (...classListArray) => {
                 classListArray.forEach(className => {
                     classList.push(className);
                 });
@@ -129,9 +150,14 @@ export const virtualDom = {
                 vDom.forEach(node => {
                     newNode.appendChild(renderNode(node));
                 });
+                if (vDom.eventListners) {
+                    for (const [type, handler] of Object.entries(vDom.eventListners)) {
+                        attachEventListener(newNode, type, handler);
+                    }
+                }
 
                 dom.innerHTML = "";
-                dom.innerHTML = newNode.innerHTML;
+                dom.replaceChildren(...newNode.childNodes);
             },
             enableMultiState: () => {
                 multiState.default = {
@@ -154,7 +180,21 @@ export const virtualDom = {
                         containerTag = multiState[stateName].tag;
                     }
                 };
+            },
+            eventListner: {
+                attach:(type,handler) => vDomEventListener.attach(vDom,type,handler)
+            },
+            export: {
+                log: () => {
+                    console.log("Exporting virtual DOM structure:");
+                    console.log(JSON.stringify(vDom, null, 2));
+                }
             }
         };
     }
 };
+// 
+
+// Global Exports
+export { childrenMethods }
+// 
