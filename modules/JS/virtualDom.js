@@ -18,7 +18,7 @@ export const virtualDom = {
         let multiState = {};
         let rootPendingUpdates = { newChildrens: [] };
         let activeStateName = null;
-        const generateRandomUid=()=>{
+        const generateRandomUid = () => {
             const cryptoUid = crypto.randomUUID();
             const randomUid = `virtualDom-${cryptoUid}`;
             return randomUid;
@@ -181,8 +181,12 @@ export const virtualDom = {
             return el;
         };
         return {
-            select: (domSelector) => {
-                dom = document.querySelector(domSelector);
+            select: (domSelectorOrElement) => {
+                if (typeof domSelectorOrElement === "string") {
+                    dom = document.querySelector(domSelectorOrElement);
+                } else if (domSelectorOrElement instanceof HTMLElement) {
+                    dom = domSelectorOrElement;
+                }
             },
             newChild,
             svgParser: (svg) => svgParser(svg, appendTo),
@@ -218,7 +222,6 @@ export const virtualDom = {
                         attachEventListener(newNode, type, handler);
                     }
                 }
-
                 dom.innerHTML = "";
                 dom.replaceChildren(...newNode.childNodes);
                 isMounted = true;
@@ -243,9 +246,14 @@ export const virtualDom = {
                         }
                     },
                     switchState: async (stateName) => {
-                        activeStateName = stateName;
+                        const saveScrollPosition = async () => {
+                            multiState[activeStateName].scrollY = window.scrollY;
+                            multiState[activeStateName.scrollX] = window.scrollX;
+                        }
+                        await saveScrollPosition();
                         vDom = multiState[stateName].vDom;
                         containerTag = multiState[stateName].tag;
+                        activeStateName = stateName;
 
                         if (isMounted) {
                             updatableNodes.clear();

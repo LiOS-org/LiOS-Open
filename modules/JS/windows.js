@@ -1,3 +1,5 @@
+import { virtualDom } from "./virtualDom.js";
+
 export const  constructWindow = {};
 
 constructWindow.new = async () => {
@@ -65,14 +67,32 @@ constructWindow.new = async () => {
       const titleBar = windowTitle.querySelector(".lios-window-titlebar");
       enableDrag(titleBar, windowContainer);
     },
-    setContents: (content) => {
+    getController: async () => {
       const windowContentWrapper = document.createElement("div");
       windowContentWrapper.classList.add("lios-window");
       const windowContent = document.createElement("div");
       windowContent.classList.add("lios-window-contents");
-      windowContent.innerHTML = content;
       windowContentWrapper.appendChild(windowContent);
       windowContainer.appendChild(windowContentWrapper);
+      const window = await virtualDom.new();
+      const abc = window.select(windowContent);
+
+
+      const svgParser = window.svgParser;
+      const render = window.render;
+      const enableMultiState = window.enableMultiState;
+      const update = window.update;
+      const eventListner = window.eventListner;
+      const newChild = window.newChild;
+
+      return {
+        svgParser,
+        render,
+        enableMultiState,
+        update,
+        eventListner,
+        newChild
+      }
     },
     applyEffect: {
       frostedGlass: () => {
