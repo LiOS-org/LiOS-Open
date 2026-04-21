@@ -7,7 +7,7 @@
     bottom:50%;
     justify-self: center;
     display: none;
-    z-index: 100000000000000000000;
+    z-index: 9999;
     padding: 12px;
     border-radius: var(--lios-pop-up-radius,15px);
     width: var(--lios-pop-up-width,70%);

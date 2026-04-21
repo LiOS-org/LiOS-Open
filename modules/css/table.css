@@ -7,6 +7,7 @@
     padding: var(--abstracted-lios-table-padding);
     gap: 15px;
     text-align: center;
+    background: var(--lios-table-background);
     align-items: center;
     border-radius: 15px;
 }
@@ -21,9 +22,11 @@
     display: flex;
     flex-direction: column;
     gap: var(--abstracted-lios-table-cell-gap);
-    background: var(--lios-table-cell-background);
     width: 100%;
     border-radius: inherit;
+}
+.lios-table .lios-table-contents .lios-table-row>*{
+    background: var(--lios-table-cell-background);
 }
 .lios-table .lios-table-contents .lios-table-row{
     display: flex;
