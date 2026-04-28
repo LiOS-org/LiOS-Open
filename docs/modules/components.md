@@ -27,4 +27,4 @@ This module supports 2 types of installation
 |<center>Sub Module Name|Documentation|
 |---------------|----------------------|
 |<center>Buttons|[View](components/buttons.md)|
-|<center>Action Button:(windows and popup)|[View](components/action-button.md)|
+|<center>Action Buttons|[View](components/action-button.md)|
