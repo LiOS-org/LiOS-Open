@@ -21,7 +21,7 @@ LiOS-Open is a modular UI system for building consistent web interfaces.
 
    > Pro tip: Choose stable over latest unless you need something specific.
 ## Modules table
-<center>
+<div align = "center">
 
 |Module|JS|CSS|Documentation|
 |------|--|---|--------------|
@@ -29,7 +29,7 @@ LiOS-Open is a modular UI system for building consistent web interfaces.
 |Components|Requires UI|✅|[View](docs/modules/components.md)|
 |Overlays|Requires UI|Unsupported|[View](docs/modules/overlays.md)|
 
-</center>
+</div>
 
 ### Terminology
 1. Unsupported: Means it is possible, but officially discouraged and not supported.
