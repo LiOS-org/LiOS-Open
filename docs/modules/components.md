@@ -17,14 +17,16 @@ This module supports 2 types of installation
    ```JS
    import {liosOpen} from "${path to liosOpen installation}/liosOpen.js";
 
-   import {components} from "${path to liosOpen installation}/modules/JS/ui.js";
+   import {components} from "${path to liosOpen installation}/modules/JS/ui/components.js";
 
    const ui = liosOpen.ui;
    ui.extend("components",components);
    ```
    > Note: JS installation still needs `CSS` to be manually installed.
+<div align = "center">
 
-|<center>Sub Module Name|Documentation|
-|---------------|----------------------|
-|<center>Buttons|[View](components/buttons.md)|
-|<center>Action Buttons|[View](components/action-button.md)|
+| Component | Documentation |
+|-----------|---------------|
+| Buttons   | [View](components/buttons.md)|
+
+</div>

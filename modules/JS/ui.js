@@ -107,6 +107,7 @@ class nodeMethods {
             parentNode = this.vDOM.parent;
         }
         if (parentNode) {
+            this.removeAllListeners();
             return new nodeMethods(
                 () => root.parentElement,
                 parentNode
