@@ -52,6 +52,6 @@ const main = new ui().create("main","body");
 
 <div align = "center">
 
-[<- Back: UI](../ui.md) | [Next: Initialization ->](node-methods.md)
+[<- Back: UI](../ui.md) | [Next: Node Methods  ->](node-methods.md)
 
 </div>
