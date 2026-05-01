@@ -15,7 +15,7 @@ LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtu
 ## Installation
 
 1. Git submodule method
-   ```zsh
+   ```bash
    git submodule add https://github.com/LiOS-org/LiOS-Open.git
    ```
 2. Manual Download
@@ -24,21 +24,20 @@ LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtu
 
    > Pro tip: Choose stable over latest unless you need something specific.
 ## Modules table
+
+> Some modules have separate JS and CSS layers with different dependencies.
+
 <div align = "center">
 
-|Module|JS|CSS|Documentation|
-|------|--|---|--------------|
-|UI|✅|❌|[View](docs/modules/ui.md)|
-|Components|Requires UI|✅|[View](docs/modules/components.md)|
-|Overlays|Requires UI|Unsupported|[View](docs/modules/overlays.md)|
+
+|Module|Depends on |Documentation|
+|------|---|--------------|
+|UI|-|[View](docs/modules/ui.md)|
+|Components (JS)|[UI](docs/modules/ui.md)|[View](docs/modules/components.md)|
+|Components (CSS)|-|[View](docs/modules/components.md)|
+|Overlays|[UI](docs/modules/ui.md)|[View](docs/modules/overlays.md)|
 
 </div>
-
-### Terminology
-1. Unsupported: Means it is possible, but officially discouraged and not supported.
-2. Requires `<module name>`: Usage depends on the specified module.
-3. ✅: Means entirely supported
-4. ❌: Means entirely unsupported / not possible.
 
 ## Why LiOS-Open?
 
