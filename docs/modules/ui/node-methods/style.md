@@ -11,7 +11,6 @@ main.style({
 ```
 > Note: 
 > - Repeated use will not override the previous styles, it will add to the existing styles.
-> - You can also use camelCase for the CSS properties, for example `backgroundColor` instead of `background-color`.
 > - To override a specific style, you can use the `style` method again with the same property and a new value.
 
 <div align = "center">
