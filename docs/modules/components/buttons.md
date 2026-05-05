@@ -146,3 +146,10 @@ Button group also have access to all of the [nodeMethods](../ui/node-methods.md)
   const buttonA = group.components().button()
   ```
 and again `buttonA` will have all the properties of normal button(via `CSS` cascade, so overwrite is easy) as well as access to [nodeMethods](../ui/node-methods.md).
+
+
+<div align = "center">
+
+[<- Back: Components](../components.md) | [Next: Tables ->](tables.md)
+
+</div>

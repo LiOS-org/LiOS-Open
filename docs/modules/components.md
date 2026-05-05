@@ -23,10 +23,18 @@ This module supports 2 types of installation
    ui.extend("components",components);
    ```
    > Note: JS installation still needs `CSS` to be manually installed.
+
 <div align = "center">
 
 | Component | Documentation |
 |-----------|---------------|
 | Buttons   | [View](components/buttons.md)|
+| Tables   | [View](components/tables.md)|
+
+</div>
+
+<div align = "center">
+
+| [Next: Buttons ->](components/buttons.md)
 
 </div>

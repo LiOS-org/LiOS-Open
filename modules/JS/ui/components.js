@@ -120,7 +120,7 @@ export const components = {
             };
 
         
-            newUI.newColumn = function () {
+            newUI.addColumn = function () {
 
                 return {
                     newUI,
