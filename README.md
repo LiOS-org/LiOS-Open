@@ -10,7 +10,7 @@
 
 LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.
 
-> ⚠️ Documentation is still a work in progress. Some parts may be incomplete or subject to change.
+
 
 ## Installation
 

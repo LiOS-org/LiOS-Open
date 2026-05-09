@@ -57,6 +57,7 @@ export const overlays = {
             };
             delete p.popup;
             delete p.window;
+            delete p.id
             return p;
         };
         this.window = () => {
