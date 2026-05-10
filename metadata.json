@@ -13,8 +13,8 @@
     "github":"https://github.com/LiOS-org/LiOS-Open/",
     "url": "https://github.com/LiOS-Org/LiOS-Open/",
     "favicon":{
-        "normal":"assets/favicon/favicon.svg",
-        "squircle":"assets/favicon/favicon-squircle.svg",
-        "circle":"assets/favicon/favicon-circle.svg"
+        "normal":"/assets/favicon/favicon.svg",
+        "squircle":"/assets/favicon/favicon-squircle.svg",
+        "circle":"/assets/favicon/favicon-circle.svg"
     }
 }
