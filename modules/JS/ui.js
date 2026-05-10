@@ -231,11 +231,12 @@ export class ui extends nodeMethods {
             });
         };
 
-        if (this.prototype[name]) {
+        if (this.prototype[name] || nodeMethods.prototype[name]) {
             throw new Error(`Method "${name}" already exists in UI`);
         };
 
         this.prototype[name] = extension.method;
+        nodeMethods.prototype[name] = extension.method;
 
         // 🔥 store metadata
         this.extensions[name] = extension.metadata;
