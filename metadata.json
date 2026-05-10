@@ -11,6 +11,7 @@
         "copy":"https://github.com/LiOS-org/LiOS-Open/blob/main/LICENSE"
     },
     "github":"https://github.com/LiOS-org/LiOS-Open",
+    "url": "https://github.com/LiOS-Org/LiOS-Open",
     "favicon":{
         "normal":"assets/favicon/favicon.svg",
         "squircle":"assets/favicon/favicon-squircle.svg",
