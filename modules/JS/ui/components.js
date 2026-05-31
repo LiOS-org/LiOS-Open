@@ -1,8 +1,17 @@
 export const components = {
     method: function () {
-        this.button = function () {
-            const newUI = this.child("div");
+        this.button = function (tag = "div") {
+            const allowed = new Set(["a", "div"]);
+
+            if (!allowed.has(tag)) {
+                throw new Error(`actionButton(): invalid tag "${tag}"`);
+            }
+            const newUI = this.child(tag);
             newUI.class.add("lios-button");
+
+            if (tag === "a") {
+                newUI.clearDefaults();
+            };
 
             newUI.buttonBackground = (value) => {
                 newUI.property({
@@ -24,9 +33,18 @@ export const components = {
 
             return newUI;
         };
-        this.actionButton = function () {
-            const newUI = this.child("div");
+        this.actionButton = function (tag = "div") {
+            const allowed = new Set(["a", "div"]);
+
+            if (!allowed.has(tag)) {
+                throw new Error(`actionButton(): invalid tag "${tag}"`);
+            }
+            const newUI = this.child(tag);
             newUI.class.add("lios-action-button");
+
+            if (tag === "a") {
+                newUI.clearDefaults();
+            };
 
             newUI.buttonBackground = (value) => {
                 newUI.property({
@@ -134,9 +152,9 @@ export const components = {
             newUI.newRow = function () {
                 const row = newUI.contents.child("div").class.add("lios-table-row");
 
+                const elements = [];
                 return {
                     cell: (...values) => {
-                        const elements = [];
                         const attachComponents = (element) => {
                             Object.defineProperty(element, "components", {
                                 get() {
@@ -166,8 +184,9 @@ export const components = {
                                 };
                             };
                         });
-                        return { newUI, elements: elements };
-                    }
+                        return { newUI };
+                    },
+                    elements: elements
                 };
             };
 
@@ -177,10 +196,10 @@ export const components = {
     },
     metadata: {
         name: "Components for LiOS-Open UI module",
-        version: "1.0.0",
-        versionCode: 1,
+        version: "1.1.0",
+        versionCode: 2,
         api: {
-            min: 1,
+            min: 2,
             max: 2
         },
         capabilities: {

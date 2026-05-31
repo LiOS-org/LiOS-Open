@@ -8,7 +8,7 @@
 
 </div>
 
-LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.
+LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal and Virtual-PeriodicTable using it. It works so well, we're open-sourcing it for developers like you.
 
 
 

@@ -1,0 +1,14 @@
+# 1.1.0
+
+## Bugfixes
+
+- In `components`, the JS module: Fixed a bug in table where `cell` was returning `elements` instead of `rows`.
+
+## New Features
+
+- In `ui` module: Added new element methods for various tags, for example `img` tag has `src`, `alt`, and `title` properties. You can find more about these methods in the [Element Methods: img](docs/modules/ui/node-methods/elementMethods.md) documentation. 
+- In `ui` module: Added new set of getters called `aboutElements` which returns read-only properties of the element such as `tagName`, `children` etc. You can find more about these methods in the [About Elements](docs/modules/ui/about-elements.md) documentation.
+  
+## Improvements (Breaking Changes)
+
+- In `ui` module: Replaced the previous style() system with a CSSOM-based StyleEngine supporting persistent rule mapping and pseudo-state styling. You can find more about the new style methods in the [Style Methods](docs/modules/ui/node-methods/style.md) documentation.

@@ -5,8 +5,8 @@ export const overlays = {
     },
     metadata: {
         name: "Overlays for LiOS-Open UI module",
-        version: "1.0.0",
-        versionCode: 1,
+        version: "1.1.0",
+        versionCode: 2,
         api: {
             min: 1,
             max: 2
@@ -28,7 +28,7 @@ export const overlays = {
                     p.class.remove("pop-up-is-closing");
                 };
                 p.class.add("pop-up-is-opening");
-                p.style({
+                p.style().set({
                     display: "flex"
                 });
             };
@@ -37,7 +37,7 @@ export const overlays = {
                     p.class.remove("pop-up-is-opening");
                 };
                 p.class.add("pop-up-is-closing");
-                p.style({
+                p.style().set({
                     display: "none"
                 });
             };
@@ -64,20 +64,20 @@ export const overlays = {
             const w = new this.constructor().create("div", "body");
             w.class.add("lios-window-container", String("lios-window-" + crypto.randomUUID()).trim());
             w.open = () => {
-                w.style({
+                w.style().set({
                     display: "flex"
                 });
                 globalWindow.location.href = `#${w.vDOM.id.trim().replace(" ", "-")}`;
                 w.restore();
             };
             w.close = () => {
-                w.style({
+                w.style().set({
                     display: "none"
                 });
                 history.replaceState(null, "", globalWindow.location.pathname);
             };
             w.restore = () => {
-                w.style({
+                w.style().set({
                     width: "var(--default-width)",
                     height: "var(--default-height)",
                     left: "",
@@ -88,7 +88,7 @@ export const overlays = {
                 });
             };
             w.background = (value) => {
-                w.style({
+                w.style().set({
                     background: value
                 });
                 return w

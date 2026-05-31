@@ -11,6 +11,6 @@ newChild.parent().style({ backgroundColor: "red" }); // sets the background colo
 
 <div align = "center">
 
-[<- Back: Child](child.md) | [Next: Remove Element ->](remove.md)
+[<- Back: Child](elementMethods.md) | [Next: Remove Element ->](remove.md)
 
 </div>

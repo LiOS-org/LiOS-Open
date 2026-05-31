@@ -9,6 +9,6 @@ The `child` method returns the newly created child element, which also has acces
 
 <div align = "center">
 
-[<- Back: Event Listeners](event-listeners.md) | [Next: Parent ->](parent.md)
+[<- Back: Event Listeners](event-listeners.md) | [Next: Parent ->](elementMethods.md)
 
 </div>
