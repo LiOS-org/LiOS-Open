@@ -33,6 +33,6 @@ main.removeAllListeners();
 
 <div align = "center">
 
-[<- Back: Attributes](attribute.md) | [Next: New Child ->](child.md)
+[<- Back: Attributes](label.md) | [Next: New Child ->](child.md)
 
 </div>

@@ -19,6 +19,7 @@ After initialization of the `ui` module, it returns a bunch of nodeMethods that 
 |id(value)| sets the id of the element | [View](node-methods/id.md)|
 |class()| Allows you to add or remove classes from the element | [View](node-methods/class.md)|
 |attr(object)| sets the attribute of the element | [View](node-methods/attribute.md)|
+|label(value)| sets the label of the element | [View](node-methods/label.md)|
 
 
 </div>

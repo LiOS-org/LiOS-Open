@@ -16,6 +16,6 @@ main.attr({
 
 <div align = "center">
 
-[<- Back: property](property.md) | [Next: Event Listeners ->](event-listeners.md)
+[<- Back: property](property.md) | [Next: Event Listeners ->](label.md)
 
 </div>
