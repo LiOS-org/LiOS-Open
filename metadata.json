@@ -1,10 +1,11 @@
 {
-    "$schema": "https://schema.liosorg.com/metadata/v1/schema.json",
+    "$schema": "https://schema.liosorg.com/metadata/v2/schema.json",
     "name": "LiOS-Open",
     "description":"LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.",
     "version":{
         "number":"1.1.0",
-        "code":2
+        "code":2,
+        "name": "Alaskan skies"
     },
     "license":{
         "name":"Apache 2.0",
@@ -16,5 +17,9 @@
         "normal":"/assets/favicon/favicon.svg",
         "squircle":"/assets/favicon/favicon-squircle.svg",
         "circle":"/assets/favicon/favicon-circle.svg"
-    }
+    },
+    "channel": "stable",
+    "OSS": true,
+    "tags": ["developer","utility"],
+    "LiOS-Project-Id": "ee4b3891-7463-4857-bb7b-2f0db42e1901"
 }
