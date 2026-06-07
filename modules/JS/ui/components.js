@@ -200,7 +200,7 @@ export const components = {
         versionCode: 2,
         api: {
             min: 2,
-            max: 2
+            max: 3
         },
         capabilities: {
             addsMethods: true,

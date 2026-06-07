@@ -3,7 +3,8 @@
     all: unset;
     display: inline-flex;
     position: relative;
-    border: var(--lios-button-border-width,0) groove var(--lios-button-border-color);
+    --border: var(--lios-button-border-width,0) groove var(--lios-button-border-color);
+    border: var(--border);
     text-align: center;
     justify-content: center;
     padding: var(--lios-button-padding, 5px);
@@ -13,6 +14,9 @@
     cursor: pointer;
     overflow: hidden;
     z-index: 0;
+}
+.lios-button:visited{
+    border: var(--border);
 }
 .lios-button *{
     position: relative;

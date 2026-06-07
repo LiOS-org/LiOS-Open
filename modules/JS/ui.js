@@ -2,9 +2,9 @@ import { nodeMethods } from "./ui/nodeMethods.js";
 import { StyleEngine } from "./ui/styleEngine/styleEngine.js";
 export const metadata = {
     name: "UI",
-    version: "1.0.0-alpha-2",
-    apiVersion: 2,
-    versionCode: 2
+    version: "1.0.0-alpha-3",
+    apiVersion: 3,
+    versionCode: 3
 };
 export class ui extends nodeMethods {
     #root;

@@ -24,6 +24,7 @@ Tag |   Documentation
 a | [View](elementMethods/a.md)
 input | [View](elementMethods/input.md)
 img | [View](elementMethods/img.md) 
+svg | [View](elementMethods/svg.md)
 
 </div>
 

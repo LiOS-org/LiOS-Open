@@ -24,6 +24,15 @@ After initialization of the `ui` module, it returns a bunch of nodeMethods that 
 
 </div>
 
+## Shorthand methods
+<div align = "center">
+
+|Method|Description|Documentation|
+|-|-|-|
+|svg(svgString)|Creates and appends a new SVG element| [View](node-methods/svg.md)
+
+</div>
+
 - Additionally, there is also aboutElements methods which returns read only properties of the element such as `tagName`, `children` etc. You can find more about these methods in the [About Elements](about-elements.md) documentation.
 
 <div align = "center">

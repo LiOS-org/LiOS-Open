@@ -9,7 +9,7 @@ export const overlays = {
         versionCode: 2,
         api: {
             min: 1,
-            max: 2
+            max: 3
         },
         capabilities: {
             addsMethods: false,

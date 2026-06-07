@@ -3,15 +3,15 @@ import { element } from "./aboutElement.js";
 export class nodeMethods {
     #vDOM;
     #styleEngine;
-    constructor(getElement, vDOM,styleEngine) {
+    constructor(getElement, vDOM, styleEngine) {
         this.getElement = getElement;
         this.#vDOM = vDOM;
         this.element = element.call(this);
         this.#vDOM.identifier ||= `lios-${crypto.randomUUID().split("-")[0]}`;
         this.#styleEngine = styleEngine;
     };
-    
-    get vDOM(){
+
+    get vDOM() {
         return this.#vDOM;
     }
     text(value) {
@@ -22,7 +22,29 @@ export class nodeMethods {
     };
     child(tagName) {
         const root = this.getElement();
-        const childElement = root.appendChild(document.createElement(tagName));
+        let childElement;
+        const svgTags = [
+            "svg",
+            "path",
+            "circle",
+            "rect",
+            "line",
+            "ellipse",
+            "polygon",
+            "polyline"
+        ];
+        if (svgTags.includes(tagName)) {
+            childElement = root.appendChild(
+                document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    tagName
+                )
+            );
+        } else {
+            childElement = root.appendChild(
+                document.createElement(tagName)
+            );
+        }
 
         const childVDOM = {
             tagName: tagName,
@@ -34,7 +56,7 @@ export class nodeMethods {
 
         const nm = new nodeMethods(
             () => childElement,
-            childVDOM,this.#styleEngine
+            childVDOM, this.#styleEngine
         );
 
         const handler = elementMethods[tagName];
@@ -45,16 +67,21 @@ export class nodeMethods {
 
         return nm;
     };
+    svg(svgString) {
+        const vector = this.child("svg");
+        vector.parse(svgString);
+        return vector;
+    };
     parent() {
         if (!this.vDOM.parent) return this;
         return new nodeMethods(
             () => this.getElement().parentElement,
-            this.vDOM.parent,this.#styleEngine
+            this.vDOM.parent, this.#styleEngine
         );
     };
     style(pseudoState) {
         const state = pseudoState;
-        const instance = this.#styleEngine.style(this.vDOM,this,state);
+        const instance = this.#styleEngine.style(this.vDOM, this, state);
         this.class.add(this.vDOM.identifier);
 
 
@@ -127,7 +154,7 @@ export class nodeMethods {
             this.removeAllListeners();
             return new nodeMethods(
                 () => root.parentElement,
-                parentNode,this.#styleEngine
+                parentNode, this.#styleEngine
             );
         }
         this.removeAllListeners();
