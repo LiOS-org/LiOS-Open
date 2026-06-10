@@ -17,10 +17,8 @@ This module supports 2 types of installation
    ```JS
    import {liosOpen} from "${path to liosOpen installation}/liosOpen.js";
 
-   import {components} from "${path to liosOpen installation}/modules/JS/ui/components.js";
-
    const ui = liosOpen.ui;
-   ui.extend("components",components);
+   ui.extend("components",liosOpen.uiExtensions.components);
    ```
    > Note: JS installation still needs `CSS` to be manually installed.
 

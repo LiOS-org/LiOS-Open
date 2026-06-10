@@ -4,11 +4,7 @@ This module provide a set of overlays like `window` and `popup`.
 
 ## Getting Started
 
-```JS
-import {overlays} from "${path-to-lios-open}/modules/JS/ui/overlays.js";
-```
-
-- CSS is also required
+- CSS is  required
   ```CSS
   @import url(${path-to-lios-open}/modules/css/pop-up.css); /*For popup*/
 
@@ -18,7 +14,7 @@ import {overlays} from "${path-to-lios-open}/modules/JS/ui/overlays.js";
 ### Initializing the module
 
 ```JS
-liosOpen.ui.extend("overlays", overlays);
+liosOpen.ui.extend("overlays", liosOpen.uiExtensions.overlays);
 
 const overlay = new liosOpen.ui();
 

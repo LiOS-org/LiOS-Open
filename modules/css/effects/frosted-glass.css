@@ -1,0 +1,8 @@
+.lios-frosted-glass{
+  --filter:blur(var(--lios-frosted-glass-blur,40px)) saturate(var(--lios-frosted-glass-saturate,1));
+  -webkit-backdrop-filter: var(--filter);
+  backdrop-filter: var(--filter);
+  mix-blend-mode: var(--lios-frosted-glass-blend-mode,normal);
+  z-index: var(--lios-frosted-glass-index,1);
+  background: var(--lios-frosted-glass-background,#0000000d);
+}
