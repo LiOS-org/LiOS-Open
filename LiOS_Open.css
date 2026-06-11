@@ -1,9 +1,9 @@
 @import url(https://lios-colors.web.app/dist/translucent_colors.css);
-@import url(modules/css/effects/frosted-glass.css);
-@import url(modules/css/navigation.css);
-@import url(modules/css/pebble_navigation.css);
-@import url(modules/css/windows.css);
-@import url(modules/css/components/buttons.css);
-@import url(modules/css/cards.css);
-@import url(modules/css/pop-up.css);
-@import url(modules/css/components/table.css);
+@import url(./modules/css/effects/effects.css);
+@import url(./modules/css/navigation.css);
+@import url(./modules/css/pebble_navigation.css);
+@import url(./modules/css/windows.css);
+@import url(./modules/css/components/buttons.css);
+@import url(./modules/css/cards.css);
+@import url(./modules/css/pop-up.css);
+@import url(./modules/css/components/table.css);

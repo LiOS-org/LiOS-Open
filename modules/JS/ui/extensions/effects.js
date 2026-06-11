@@ -30,6 +30,43 @@ export const effects = {
                 
             return this;
         };
+        this.textShadow = function (options = {}) {
+            this.class.add("lios-text-shadow");
+            if (options.color) {
+                this.property({
+                    "--lios-text-shadow-text": options.color
+                });
+            };
+            if (options.offsetX) {
+                this.property({
+                    "--lios-text-shadow-offsetX": options.offsetX
+                });
+            };
+            if (options.offsetY) {
+                this.property({
+                    "--lios-text-shadow-offsetY": options.offsetY
+                });
+            };
+            if (options.blurRadius) {
+                this.property({
+                    "--lios-text-shadow-blur-radius": options.blurRadius
+                });
+            };
+            if (options.shadowColor) {
+                this.property({
+                    "--lios-text-shadow-color": options.shadowColor
+                });
+            };
+            this.noTextShadowBlur = () => {
+                this.property({
+                    "--lios-text-shadow-blur-radius": "0"
+                });
+                return this;
+            };
+
+
+            return this;
+        }
         return this;
     },
     metadata: {

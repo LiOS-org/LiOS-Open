@@ -1,0 +1,5 @@
+.lios-text-shadow {
+    --color: var(--lios-text-shadow-text);
+    color:var(--color,inherit);
+    text-shadow: var(--lios-text-shadow-offsetX,3px) var(--lios-text-shadow-offsetY,3px) var(--lios-text-shadow-blur-radius,3px) var(--lios-text-shadow-color,rgba(0,0,0,0.3));
+}
