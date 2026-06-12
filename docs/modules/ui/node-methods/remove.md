@@ -8,7 +8,7 @@ newChild.remove(); // removes the newChild element from the DOM
 > Note: The remove method automatically removes all event listeners attached to the element, so you don't have to worry about memory leaks when using this method.
 
 > Are you looking for
-> - [removeAllEventListeners](event-listeners.md#removeAllEventListeners)
+> - [removeAllEventListeners](event-listeners.md#Remove-Event-Listener)
 
 
 <div align = "center">

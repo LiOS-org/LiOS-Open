@@ -36,6 +36,8 @@ LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal and Vi
 |Components (JS)|[UI](docs/modules/ui.md)|[View](docs/modules/components.md)|
 |Components (CSS)|-|[View](docs/modules/components.md)|
 |Overlays|[UI](docs/modules/ui.md)|[View](docs/modules/overlays.md)|
+|Effects(CSS)|-|[View](./docs/modules/effects.md)|
+|Effects(JS)|[UI](./docs/modules/ui.md)|[View](./docs/modules/effects.md)|
 
 </div>
 
