@@ -19,5 +19,6 @@ This module supports two types of usage
 |Submodule|CSS|JS|
 |-|-|-|
 |Frosted Glass|[View](./effects/css/frosted-glass.md)|[View](./effects/JS/frosted-glass.md)|
+|Text Shadow|[View](./effects/css/text-shadow.md)|[View](./effects/JS/text-shadow.md)|
 
 </div>

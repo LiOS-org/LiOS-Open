@@ -1,3 +1,10 @@
+## 1.2.1
+
+### New Module : Effects
+
+- Available to be used with both `CSS` (standalone) or `JS` depends on [UI module](./docs/modules/ui.md).
+- For more information [read documentation](./docs/modules/effects.md)
+
 ## 1.2.0
 
 ### New Features

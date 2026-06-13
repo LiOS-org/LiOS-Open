@@ -3,8 +3,8 @@
     "name": "LiOS-Open",
     "description":"LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.",
     "version":{
-        "number":"1.2.0",
-        "code":3,
+        "number":"1.2.1",
+        "code":4,
         "name": "Alaskan skies"
     },
     "license":{
