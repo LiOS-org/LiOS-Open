@@ -22,6 +22,7 @@
 .lios-pop-up.pop-up-is-opening{
     animation: LiOS-Open-Popup-Open 0.1s linear 1 forwards;
     transition: all 0.4s ease-in-out;
+    display: flex;
 }
 @keyframes LiOS-Open-Popup-Open{
     0%{
@@ -37,6 +38,7 @@
 .lios-pop-up.pop-up-is-closing{
     animation: LiOS-Open-Popup-Close 0.1s linear 1 forwards;
     transition: all 0.4s ease-in-out;
+    display: none;
 }
 @keyframes LiOS-Open-Popup-Close{
     0%{

@@ -69,13 +69,17 @@ export const effects = {
         }
         return this;
     },
+    initFunction: function (ctx) {
+        const effectsCSS = "../../../css/effects/effects.css";
+        ctx.styleEngine.installCSS(effectsCSS);
+    },
     metadata: {
         name: "Effects for LiOS-Open UI module",
-        version: "1.0.0",
-        versionCode: 1,
+        version: "1.1.0",
+        versionCode: 2,
         api: {
             min: 2,
-            max: 3
+            max: 4
         },
         capabilities: {
             addsMethods: true,

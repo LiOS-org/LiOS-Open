@@ -83,7 +83,8 @@ export const components = {
                     "--lios-button-on-hover-background": value
                 });
                 return newUI;
-            }
+            };
+            newUI.button = this.button;
 
 
             return newUI;
@@ -194,13 +195,20 @@ export const components = {
         };
         return this;
     },
+    initFunction: function (ctx) {
+        const buttonsStyle = "../../../css/components/buttons.css";
+        const tableStyle = "../../../css/components/table.css";
+
+        ctx.styleEngine.installCSS(buttonsStyle);
+        ctx.styleEngine.installCSS(tableStyle);
+    },
     metadata: {
         name: "Components for LiOS-Open UI module",
-        version: "1.1.0",
-        versionCode: 2,
+        version: "1.2.0",
+        versionCode: 3,
         api: {
             min: 2,
-            max: 3
+            max: 4
         },
         capabilities: {
             addsMethods: true,

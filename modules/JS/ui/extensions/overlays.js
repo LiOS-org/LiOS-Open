@@ -1,45 +1,21 @@
 const globalWindow = window;
 export const overlays = {
     method: function () {
-        return this;
-    },
-    metadata: {
-        name: "Overlays for LiOS-Open UI module",
-        version: "1.1.0",
-        versionCode: 2,
-        api: {
-            min: 1,
-            max: 3
-        },
-        capabilities: {
-            addsMethods: false,
-            overridesMethods: true,
-            addsProperties: true
-        }
-    },
-    initFunction: function () {
         this.popup = () => {
-            const p = new this.constructor().create("div", "body");
-            const randomUID = String("lios-popup-"+crypto.randomUUID()).trim();
-            p.id(randomUID);
+            const portal = this.ctx.nodeMethods.newPortal("body", "div")
+            const p = this.connectPortal(portal);
             p.class.add("lios-pop-up");
             p.open = () => {
                 if (p.vDOM.class.includes("pop-up-is-closing")) {
                     p.class.remove("pop-up-is-closing");
                 };
                 p.class.add("pop-up-is-opening");
-                p.style().set({
-                    display: "flex"
-                });
             };
             p.close = () => {
                 if (p.vDOM.class.includes("pop-up-is-opening")) {
                     p.class.remove("pop-up-is-opening");
                 };
                 p.class.add("pop-up-is-closing");
-                p.style().set({
-                    display: "none"
-                });
             };
             p.delete = () => {
                 p.removeAllListeners();
@@ -55,24 +31,23 @@ export const overlays = {
                 });
                 return p;
             };
-            delete p.popup;
-            delete p.window;
-            delete p.id
             return p;
         };
         this.window = () => {
-            const w = new this.constructor().create("div", "body");
-            w.class.add("lios-window-container", String("lios-window-" + crypto.randomUUID()).trim());
+            const portal = this.ctx.nodeMethods.newPortal("body", "div");
+            const w = this.connectPortal(portal);
+            w.class.add("lios-window-container");
             w.open = () => {
-                w.style().set({
-                    display: "flex"
+                if (!(w.vDOM.id)) throw new Error("Window needs id to function");
+                w.property({
+                    "--window-status": "flex"
                 });
                 globalWindow.location.href = `#${w.vDOM.id.trim().replace(" ", "-")}`;
                 w.restore();
             };
             w.close = () => {
-                w.style().set({
-                    display: "none"
+                w.property({
+                    "--window-status": "none"
                 });
                 history.replaceState(null, "", globalWindow.location.pathname);
             };
@@ -93,12 +68,13 @@ export const overlays = {
                 });
                 return w
             };
-            const titleBar = w.child("div").class.add("lios-window-titlebar").style({
+            const titleBar = w.child("div").class.add("lios-window-titlebar").style().set({
                 cursor: "pointer"
             });
             const title = titleBar.child("span").text("").class.add("lios-window-title");
+            const originalId = w.id.bind(w);
             w.setId = (value) => {
-                w.id(value);
+                originalId(value);
                 title.text(value);
                 return w;
             };
@@ -108,14 +84,14 @@ export const overlays = {
             const controller = titleBar.child("div");
             const closeButton = controller.child("div").text("X").on("click", () => {
                 w.close();
-            }).class.add("lios-window-close").style({
+            }).class.add("lios-window-close").style().set({
                 background: "#c6101e"
             });
-            const enableDrag = (titlebar, container) => {
+            const enableDrag = (titleBar, container) => {
                 let isDragging = false;
                 let offsetX, offsetY = 0;
 
-                titlebar.addEventListener("mousedown", (e) => {
+                titleBar.addEventListener("mousedown", (e) => {
                     isDragging = true;
                     const rect = container.getBoundingClientRect();
                     offsetX = e.clientX - rect.left;
@@ -130,7 +106,7 @@ export const overlays = {
                     container.style.left = `${e.clientX - offsetX}px`;
                     container.style.top = `${e.clientY - offsetY}px`;
                 });
-    
+
                 document.addEventListener("mouseup", () => {
                     if (!isDragging) return;
                     isDragging = false;
@@ -139,13 +115,108 @@ export const overlays = {
             };
             enableDrag(titleBar.getElement(), w.getElement());
 
-            // Re assignments
-            w.child = window.child;
+            // Multiple Window Handling
+            w.on("mousedown", () => {
+                document.querySelectorAll(".lios-window-container.last-interacted").forEach((win) => {
+                    win.classList.remove("last-interacted");
+                });
+                w.getElement().classList.add("last-interacted");
+            });
 
-            delete w.id
-            delete w.popup;
-            delete w.window;
+            // Re assignments
+            w.child = window.child.bind(window);
+            w.text = window.text.bind(window);
+            w.clear = window.clear.bind(window);
+            w.id = w.setId;
             return w;
+        };
+        this.toolTip = (options = {}) => {
+            const portal = this.ctx.nodeMethods.newPortal("body", "div");
+            const overlay = this.connectPortal(portal);
+            overlay.class.add("lios-tooltip");
+
+            const style = this.ctx.styleEngine.connect(overlay);
+            style.background(options.background ||= "inherit").padding(options.padding ||= "5px").borderRadius(options.borderRadius ||= "5px");
+            style.border(options.border ||= "2px inset white").color(options.color ||= "white");
+
+
+            overlay.show = (e,content) => {
+                const gap = 12;
+                let x = e.x;
+                let y = e.y;
+                const pageX = document.documentElement.scrollWidth;
+                const pageY = document.documentElement.scrollHeight;
+                const overlayX = overlay.getElement().offsetWidth;
+                const overlayY = overlay.getElement().offsetHeight
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                if (content) {
+                    overlay.clear();
+                    overlay.text(content);
+                };
+
+                if (x + overlayX + gap > viewportWidth) {
+                    x = x - overlayX - gap;
+                } else {
+                    x = x + gap;
+                };
+                if (y + overlayY + gap > viewportHeight) {
+                    y = y - overlayY - gap;
+                } else {
+                    y = y + gap;
+                };
+                overlay.property({
+                    "--lios-tooltip-display": "flex",
+                    "--lios-tooltip-top": `${y}px`,
+                    "--lios-tooltip-left": `${x}px`
+                });
+            };
+            overlay.hide = () => {
+                overlay.property({
+                    "--lios-tooltip-display": "none"
+                });
+            };
+            overlay.bind = (UINode, content, { decorate = true, highlight = true } = {}) => {
+                if (!UINode) return;
+                if (decorate) {
+                    UINode.style().set({
+                        textDecoration: "underline dotted"
+                    });
+                };
+                if (highlight) {
+                    UINode.style().set({
+                        transition: "background .15s ease-in-out"
+                    });
+
+                    UINode.style(":hover").set({
+                        background: "color-mix(in srgb, currentColor 10%, transparent)",
+                        transition: "background .15s ease-in-out"
+                    });
+                };
+                UINode.on("pointermove", (e) => overlay.show(e, content));
+                UINode.on("pointerleave", overlay.hide);
+            };
+
+            return overlay;
+        };
+        return this;
+    },
+    metadata: {
+        name: "Overlays for LiOS-Open UI module",
+        version: "2.0.0",
+        versionCode: 3,
+        api: {
+            min: 1,
+            max: 4
+        },
+        capabilities: {
+            addsMethods: true,
+            overridesMethods: false,
+            addsProperties: true
         }
+    },
+    initFunction: function (ctx) {
+        ctx.styleEngine.installCSS("../../../css/overlays/overlays.css");
     }
 };

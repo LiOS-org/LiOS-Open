@@ -2,12 +2,25 @@ import { nodeMethods } from "./ui/nodeMethods.js";
 import { StyleEngine } from "./ui/styleEngine/styleEngine.js";
 export const metadata = {
     name: "UI",
-    version: "1.0.0-alpha-3",
-    apiVersion: 3,
-    versionCode: 3
+    version: "1.0.0-alpha-4",
+    apiVersion: 4,
+    versionCode: 4
 };
+const context = {
+    nodeMethods: {
+        newPortal: nodeMethods.newPortal.bind(nodeMethods)
+    },
+    styleEngine: {
+        cloneStyle: StyleEngine.cloneStyle.bind(StyleEngine),
+        installCSS: StyleEngine.installCSS.bind(StyleEngine),
+        connect: StyleEngine.connect.bind(StyleEngine)
+    }
+};
+Object.freeze(context);
 export class ui extends nodeMethods {
     #root;
+    extensions = {};
+    initFunctions = [];
 
     constructor(selector = null) {
         let root = null;
@@ -35,14 +48,19 @@ export class ui extends nodeMethods {
         };
         // Style Engine Injection
         const styleEngine = new StyleEngine(vDOM);
+        // 
 
-        super(() => this.#root, vDOM,styleEngine);
+        super(() => this.#root, vDOM, styleEngine, context);
+        this.owner = this;
         this.#root = root;
-        this.constructor.initFunctions.forEach(fn => {
-
-            fn.call(this);
-
+        // Extension Initialization
+        for (const [name, extension] of Object.entries(this.constructor.globalExtensions)) {
+            this.#registerExtension(name, extension);
+        };
+        this.constructor.globalInitFunctions.forEach(fn => {
+            fn.call(this, context);
         });
+        // 
     };
 
     create(tagName, parent) {
@@ -67,30 +85,42 @@ export class ui extends nodeMethods {
 
         return this;
     };
-    static extensions = {};
-    static initFunctions = [];
-
-    static extend(name, extension) {
+    #registerExtension(name, extension) {
         if (metadata.apiVersion < extension.metadata.api.min || metadata.apiVersion > extension.metadata.api.max) {
             throw new Error("Extension is not compatible with current API version", {
                 cause: extension.metadata.name
             });
         };
 
-        if (this.prototype[name] || nodeMethods.prototype[name]) {
+        if (this[name] || nodeMethods.prototype[name]) {
             throw new Error(`Method "${name}" already exists in UI`);
         };
+        this[name] = extension.method;
+        // nodeMethods.prototype[name] = extension.method;
 
-        this.prototype[name] = extension.method;
-        nodeMethods.prototype[name] = extension.method;
+        // Store the extension for future reference
+        this.extensions[name] = extension;
+        if (extension.initFunction) {
+            this.initFunctions.push(extension.initFunction);
+        }
+    };
+    extend(name, extension) { 
+        this.#registerExtension(name, extension);
+    }
 
+    // Static properties for global extensions and init functions
+    static globalExtensions = {};
+    static globalInitFunctions = [];
+
+    static extend(name, extension) {
         // 🔥 store metadata
-        this.extensions[name] = extension.metadata;
+        this.globalExtensions[name] = extension;
 
         if (extension.initFunction) {
-            this.initFunctions.push(extension.initFunction)
-            
+            this.globalInitFunctions.push(extension.initFunction)
         };
 
     };
+    static nodeMethods = context.nodeMethods;
+    static styleEngine = context.styleEngine;
 };

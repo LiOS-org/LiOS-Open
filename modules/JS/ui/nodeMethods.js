@@ -3,17 +3,44 @@ import { element } from "./aboutElement.js";
 export class nodeMethods {
     #vDOM;
     #styleEngine;
-    constructor(getElement, vDOM, styleEngine) {
+    #ctx;
+    #newNodeMethods = (element, vDOM) => {
+        const nm = new nodeMethods(
+            () => element,
+            vDOM, this.#styleEngine, this.#ctx
+        );
+        nm.owner = this.owner;
+        nm.initializeExtensions();
+        return nm;
+    };
+    extensions = {};
+    initFunctions = [];
+    constructor(getElement, vDOM, styleEngine, context) {
         this.getElement = getElement;
         this.#vDOM = vDOM;
         this.element = element.call(this);
         this.#vDOM.identifier ||= `lios-${crypto.randomUUID().split("-")[0]}`;
         this.#styleEngine = styleEngine;
+        this.#ctx = context;
+    };
+
+    initializeExtensions() {
+        for (const [name, extension] of Object.entries(this.owner.extensions)) {
+            this[name] = extension.method;
+
+        };
+        this.owner.initFunctions.forEach(fn => fn.call(this, this.#ctx));
     };
 
     get vDOM() {
         return this.#vDOM;
-    }
+    };
+    get ctx() {
+        return this.#ctx;
+    };
+    get styleEngine() {
+        return this.#styleEngine;
+    };
     text(value) {
         const root = this.getElement();
         root.textContent = value;
@@ -54,12 +81,15 @@ export class nodeMethods {
 
         this.vDOM.children.push(childVDOM);
 
-        const nm = new nodeMethods(
-            () => childElement,
-            childVDOM, this.#styleEngine
-        );
+        // const nm = new nodeMethods(
+        //     () => childElement,
+        //     childVDOM, this.#styleEngine
+        // );
+        // nm.owner = this.owner;
+        // nm.initializeExtensions();
 
         const handler = elementMethods[tagName];
+        const nm = this.#newNodeMethods(childElement, childVDOM);
 
         if (handler) {
             handler.call(nm);
@@ -74,10 +104,13 @@ export class nodeMethods {
     };
     parent() {
         if (!this.vDOM.parent) return this;
-        return new nodeMethods(
-            () => this.getElement().parentElement,
-            this.vDOM.parent, this.#styleEngine
-        );
+        // const nm = new nodeMethods(
+        //     () => this.getElement().parentElement,
+        //     this.vDOM.parent, this.#styleEngine
+        // );
+        // nm.owner = this.owner;
+        // nm.initializeExtensions();
+        return this.#newNodeMethods(this.getElement().parentElement, this.vDOM.parent);
     };
     style(pseudoState) {
         const state = pseudoState;
@@ -92,7 +125,9 @@ export class nodeMethods {
         this.vDOM.property = this.vDOM.property || {};
 
         for (const [key, value] of Object.entries(object)) {
-            root.style.setProperty(key, value)
+            this.style().set({
+                [key]: value
+            });
             this.vDOM.property[key] = value;
         }
         return this;
@@ -152,22 +187,23 @@ export class nodeMethods {
         }
         if (parentNode) {
             this.removeAllListeners();
-            return new nodeMethods(
-                () => root.parentElement,
-                parentNode, this.#styleEngine
-            );
+            // const nm = new nodeMethods(
+            //     () => root.parentElement,
+            //     parentNode, this.#styleEngine
+            // );
+            // nm.owner = this.owner;
+            // nm.initializeExtensions();
+            return this.#newNodeMethods(root.parentElement, parentNode);
         }
         this.removeAllListeners();
         return this;
     };
-
     id(value) {
         const root = this.getElement();
         root.id = value;
         this.vDOM.id = value;
         return this;
     };
-
     get class() {
         const root = this.getElement();
         return {
@@ -203,5 +239,47 @@ export class nodeMethods {
             this.vDOM.attributes[name] = value;
         };
         return this;
+    };
+    clear() {
+        if (this.vDOM.parent === null) throw new Error("Can not clear root node");
+        const element = this.getElement();
+        element.innerHTML = "";
+        this.vDOM.children = [];
+        this.vDOM.text = "";
+        this.removeAllListeners();
+        return this;
+    };
+    connectPortal(portal) {
+        if (portal.isConnected) throw new Error("A portal can only only be connected once.");
+        const root = portal.mountTarget;
+        const child = root.appendChild(portal.element)
+        portal.parent = this.vDOM;
+        portal.isConnected = true;
+        const handler = elementMethods[portal.tagName];
+        const nm = this.#newNodeMethods(child, portal);
+        if (handler) {
+            handler.call(nm);
+        };
+        this.vDOM.children.push(portal);
+        return nm;
+    };
+
+    // Static Methods
+
+    static newPortal(parent, newChild) {
+        const portalParent = document.querySelector(parent);
+        const child = document.createElement(newChild);
+        const vDOM = {
+            tagName: newChild,
+            children: [],
+            mountTarget: portalParent,
+            parent: null,
+            element: child,
+            text: "",
+            style: {},
+            isPortal: true,
+            isConnected: false
+        };
+        return vDOM;
     };
 };

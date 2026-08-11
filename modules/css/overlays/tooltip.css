@@ -1,0 +1,8 @@
+.lios-tooltip{
+    display: var(--lios-tooltip-display,none);
+    position: fixed;
+    top:var(--lios-tooltip-top);
+    left:var(--lios-tooltip-left);
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+}

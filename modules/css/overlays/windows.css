@@ -1,5 +1,5 @@
 .lios-window-container {
-  display: none;
+  display: var(--window-status,none);
   position: fixed;
   z-index: 1000;
   --default-width: 80%;
@@ -14,6 +14,9 @@
   min-width: 300px;
   resize: both;
   overflow: auto;
+}
+.lios-window-container.last-interacted{
+  z-index: 1001;
 }
 .lios-window-container hr {
   margin: unset;
