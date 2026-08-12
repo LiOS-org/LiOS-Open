@@ -104,7 +104,7 @@ export class StyleEngine {
     };
     static connect(node) {
         const vDOM = node.vDOM;
-        if (!(vDOM.class.includes(vDOM.identifier))) node.class.add(vDOM.identifier);
+        if (!(vDOM.class && vDOM.class.includes(vDOM.identifier))) node.class.add(vDOM.identifier);
         const styleEngine = node.styleEngine;
         // Initiate StyleOnce
         styleEngine.style(vDOM, node);
