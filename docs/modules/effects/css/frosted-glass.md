@@ -27,7 +27,7 @@ In order to not change the default config, we will create a secondary identifier
    ```
 2. Saturation
    
-   By default the saturation is `1`, and you dont need to change it in many case, but if you do 
+   By default the saturation is `1`, and you don't need to change it in many case, but if you do 
 
    ```CSS
    .docs-showcase{
@@ -61,4 +61,4 @@ In order to not change the default config, we will create a secondary identifier
     --lios-frosted-glass-background: rgba(163,139,191,0.3) /* Make sure its a translucent color */
    }
    ```
-   > Note: The quality of effect also depends on the transluceny of the background color provided
+   > Note: The quality of effect also depends on the translucency of the background color provided

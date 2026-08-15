@@ -29,7 +29,7 @@ This submodule allows the developer to apply the `text-shadow` effect without re
    
    ```CSS
    .demo-shadow{
-    --lios-text-shadow-offsetX: 5px /* Positions the shadow 5px away from the text virtically in downwards direction, `-` sign reverses the direction */
+    --lios-text-shadow-offsetX: 5px /* Positions the shadow 5px away from the text vertically in downwards direction, `-` sign reverses the direction */
    }
    ```
 4. Offset Y

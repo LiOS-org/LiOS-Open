@@ -1,3 +1,10 @@
+## Unreleased
+
+### Changes
+
+- Updated the url for LiOS-Colors-Data
+- 
+
 ## 1.2.1
 
 ### New Module : Effects
