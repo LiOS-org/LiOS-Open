@@ -13,7 +13,6 @@ This module provides a set of components for efficient web building.
 | Component | Documentation |
 |-----------|---------------|
 | Buttons   | [View](components/buttons.md)|
-| Tables   | [View](components/tables.md)|
 
 </div>
 

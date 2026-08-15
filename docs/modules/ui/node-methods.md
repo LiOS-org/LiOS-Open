@@ -20,6 +20,7 @@ After initialization of the `ui` module, it returns a bunch of nodeMethods that 
 |class()| Allows you to add or remove classes from the element | [View](node-methods/class.md)|
 |attr(object)| sets the attribute of the element | [View](node-methods/attribute.md)|
 |label(value)| sets the label of the element | [View](node-methods/label.md)|
+|clear()| Clears the contents of node| [View](node-methods/clear.md)|
 
 
 </div>

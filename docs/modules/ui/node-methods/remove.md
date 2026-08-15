@@ -13,6 +13,6 @@ newChild.remove(); // removes the newChild element from the DOM
 
 <div align = "center">
 
-[<- Back: Parent](parent.md) 
+[<- Back: Parent](parent.md)|[Next: Clear Element ->](./clear.md)
 
 </div>

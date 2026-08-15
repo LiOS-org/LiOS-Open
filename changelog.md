@@ -1,9 +1,30 @@
-## Unreleased
+## 1.3.0
 
-### Changes
+### Overall changes
 
-- Updated the url for LiOS-Colors-Data
-- 
+- Documentation refactored: We refactored most of the documentation across modules, we made sure non of the documentation are broke. Some leftover documentations will be refactored gradually.
+
+### UI Module
+
+#### New features
+
+- `context` : Provides you powerful APIs to interact with internal `UI` module features. [Docs](./docs/modules/ui/ui-extensions/context.md)
+- `StyleEngine.connect` : Provides fluent chaining API for styling. [Docs](./docs/modules/ui/style-engine/connect.md)
+- `StyleEngine.cloneStyle` : Allows you to clone styles from one node to another and works across `UI` instances. [Docs](./docs/modules/ui/style-engine/clone-style.md)
+- `StyleEngine.installCSS` : Provides a built in way to install CSS files with deduplication abilities. [Docs](./docs/modules/ui/style-engine/install-css.md)
+- `Portals` : Create and mount a child node, out of visual hierarchy. [Docs](./docs/modules/ui/node-methods/portals.md)
+- `Clear` : A `nodeMethods` able to clear contents of a node (non root). [Docs](./docs/modules/ui/node-methods/clear.md)
+  
+#### Changes
+
+- Extensions now automatically installs their CSS.
+- Now you have option to install extensions either per instance on globally. [See](./docs/modules/ui/ui-extensions/extensions.md)
+- Updated implementation of [overlays](./docs/modules/ui/ui-extensions/overlays.md) extension.
+- Moved `UIExtensions` away from [modules](./getting-started.md#modules-table) table to its [own page]((./docs/modules/ui/ui-extensions/standaed-extensions.md))
+- Proper documentation for building an extension. [Docs](./docs/modules/ui/ui-extensions/extensions.md)
+  
+>**Note:** Some features are yet to be documented.
+
 
 ## 1.2.1
 
