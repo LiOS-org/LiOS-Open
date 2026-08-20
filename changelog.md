@@ -1,3 +1,11 @@
+## 1.3.1
+
+### UI Module
+
+#### Effects Extension
+
+- Documented `effects` extension. [See](./docs/modules/ui/ui-extensions/effects.md).
+
 ## 1.3.0
 
 ### Overall changes

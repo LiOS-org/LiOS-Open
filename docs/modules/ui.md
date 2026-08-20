@@ -14,6 +14,6 @@ const ui = liosOpen.ui;
 ```
 <div align = "center">
 
-[<- Back: Modules](/README.md#modules-table) | [Next: Initialization ->](../modules/ui/initialization.md)
+[<- Back: Modules](./../../getting-started.md#modules-table) | [Next: Initialization ->](../modules/ui/initialization.md)
 
 </div>

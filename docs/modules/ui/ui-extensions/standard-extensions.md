@@ -8,3 +8,4 @@ Standard extensions are `UI` extensions shipped with the `UI` module, providing 
 |--------------|-------------|
 |Components| [Docs](./components/components.md)|
 |Overlays| [Docs](./overlays.md)|
+|Effects|[Docs](./effects.md)

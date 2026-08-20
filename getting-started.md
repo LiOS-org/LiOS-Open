@@ -38,4 +38,4 @@ A table to route you to every module and its documentation if available.
 
 </div>
 
-> Note: UI Extensions are moved [here](./docs/modules/ui/ui-extensions/standaed-extensions.md) and they are no longer treated as an standalone module.
+> Note: UI Extensions are moved [here](./docs/modules/ui/ui-extensions/standard-extensions.md) and they are no longer treated as an standalone module.
