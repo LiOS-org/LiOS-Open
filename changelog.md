@@ -1,3 +1,9 @@
+## 1.3.2
+
+### Components module
+
+- Refactored `normal-buttons` [documentation](./docs/modules/components/normal-buttons.md);
+
 ## 1.3.1
 
 ### UI Module
