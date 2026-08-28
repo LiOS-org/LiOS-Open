@@ -1,3 +1,9 @@
+## 1.3.3
+
+### Components Module
+
+- Refactored `action-buttons` documentation. [Docs](./docs/modules/components/action-buttons.md)
+
 ## 1.3.2
 
 ### Components module

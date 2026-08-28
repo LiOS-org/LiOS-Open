@@ -1,25 +1,28 @@
 {
     "$schema": "https://schema.liosorg.com/metadata/v2/schema.json",
     "name": "LiOS-Open",
-    "description":"LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.",
-    "version":{
-        "number":"1.3.2",
-        "code":7,
+    "description": "LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal, Virtual-PeriodicTable, and LiOS-InkWell using it. It works so well, we're open-sourcing it for developers like you.",
+    "version": {
+        "number": "1.3.3",
+        "code": 8,
         "name": "Alaskan skies"
     },
-    "license":{
-        "name":"Apache 2.0",
-        "copy":"https://github.com/LiOS-org/LiOS-Open/blob/main/LICENSE"
+    "license": {
+        "name": "Apache 2.0",
+        "copy": "https://github.com/LiOS-org/LiOS-Open/blob/main/LICENSE"
     },
-    "github":"https://github.com/LiOS-org/LiOS-Open/",
+    "github": "https://github.com/LiOS-org/LiOS-Open/",
     "url": "https://github.com/LiOS-Org/LiOS-Open/",
-    "favicon":{
-        "normal":"/assets/favicon/favicon.svg",
-        "squircle":"/assets/favicon/favicon-squircle.svg",
-        "circle":"/assets/favicon/favicon-circle.svg"
+    "favicon": {
+        "normal": "/assets/favicon/favicon.svg",
+        "squircle": "/assets/favicon/favicon-squircle.svg",
+        "circle": "/assets/favicon/favicon-circle.svg"
     },
     "channel": "stable",
     "OSS": true,
-    "tags": ["developer","utility"],
+    "tags": [
+        "developer",
+        "utility"
+    ],
     "LiOS-Project-Id": "ee4b3891-7463-4857-bb7b-2f0db42e1901"
 }

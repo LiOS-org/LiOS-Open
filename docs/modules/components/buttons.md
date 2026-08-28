@@ -6,4 +6,5 @@ This sub-module provides pre-built CSS for buttons
 
 |Type|Docs|
 |----|----|
-|Normal Buttons|[View](./normal-buttons.md)
+|Normal Buttons|[View](./normal-buttons.md)|
+|Action Buttons| [View](./action-buttons.md)

@@ -1,11 +1,28 @@
-## Action Button
+# Components: Action Button
 
-Action button is a special variant of the button, with some special features. It it can also be used with both `CSS` and `JS`
+This is a action button, with slide an on hover shadow animation:-
 
+```HTML
+<!-- HTML Structure -->
+<div class = "lios-action-button demo-button"> Click Me </div>
+```
+>**Note:** You can also use `a` tag
 
-It can be initialized similarly to normal button, except for the class name to be used is `lios-action-button `.
+  
+## Styling 
 
-Available CSS variables are as follows:-
+This component provides two `CSS variables`:-
 
-- `--lios-action-button-background`: works similar to normal buttons, no defaults
-- `--lios-action-button-box-shadow `: appears as an transition upon hovered, it creates a box shadow of the provided color to suggest an action, no defaults.
+1. --lios-action-button-background : Changes the button background
+2. --lios-action-button-box-shadow : Changes the on-hover shadow color
+
+```CSS
+.demo-button{
+    --lios-action-button-background : pink;
+    --lios-action-button-box-shadow : red;
+}
+/* Because of cascading you can also set these values at a single place and style them all */
+:root{
+    ...
+}
+```
