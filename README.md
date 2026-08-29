@@ -14,7 +14,7 @@ LiOS-Open is our internal foundation. We built LiOS-Colors, Tech-Informal and Vi
 
 <div align = "center">
 
-[<u> Getting Started </u>](getting-started.md)
+[<u> Getting Started </u>](getting-started.md) | [<u> Roadmap </u>](./roadmap.md)
 
 </div>
 
