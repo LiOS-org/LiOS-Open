@@ -37,11 +37,14 @@ export class StyleEngine {
     #sheet;
 
     constructor(vDOM) {
-        this.#styleTag = document.createElement("style");
+        const styleSheet = this.#styleTag = document.createElement("style");
         document.head.appendChild(this.#styleTag);
 
         this.#sheet = this.#styleTag.sheet;
-    }
+        if (StyleEngine.styleSheetMountReference === null) {
+            StyleEngine.styleSheetMountReference = styleSheet;
+        };
+    };
     style(vDOM, myNode, pseudoState) {
         vDOM.style ||= {};
         const node = myNode;
@@ -100,7 +103,7 @@ export class StyleEngine {
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = css;
-        document.head.appendChild(link);
+        document.head.insertBefore(link, this.styleSheetMountReference);
     };
     static connect(node) {
         const vDOM = node.vDOM;
@@ -114,6 +117,7 @@ export class StyleEngine {
 
         return new CSSFluent(rule);
     };
+    static styleSheetMountReference = null;
 };
 class CSSFluent {
     rule;

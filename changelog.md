@@ -1,3 +1,13 @@
+## 1.3.4
+
+### UI Module 
+
+- **apiVersion:** 4 (unchanged)
+
+#### Changes
+
+- In StyleEngine, `installCSS` now installs CSS files before any of StyleEngine's rule-sheet which means now you can overwrite any CSS property added by `installCSS` using [StyleEngine](./docs/modules/ui/style-engine.md).
+
 ## 1.3.3
 
 ### Components Module

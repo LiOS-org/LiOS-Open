@@ -184,7 +184,7 @@ export class nodeMethods {
                 siblings.splice(index, 1);
             }
             parentNode = this.vDOM.parent;
-        }
+        };
         if (parentNode) {
             this.removeAllListeners();
             // const nm = new nodeMethods(
@@ -194,7 +194,7 @@ export class nodeMethods {
             // nm.owner = this.owner;
             // nm.initializeExtensions();
             return this.#newNodeMethods(root.parentElement, parentNode);
-        }
+        };
         this.removeAllListeners();
         return this;
     };

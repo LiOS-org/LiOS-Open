@@ -2,9 +2,9 @@ import { nodeMethods } from "./ui/nodeMethods.js";
 import { StyleEngine } from "./ui/styleEngine/styleEngine.js";
 export const metadata = {
     name: "UI",
-    version: "1.0.0-alpha-4",
+    version: "1.0.0-alpha-5",
     apiVersion: 4,
-    versionCode: 4
+    versionCode: 5
 };
 const context = {
     nodeMethods: {
