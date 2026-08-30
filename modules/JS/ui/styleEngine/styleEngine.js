@@ -27,10 +27,10 @@ class ChildController {
 function normalizePropertyName(propertyName) {
     if (propertyName.startsWith("--") || propertyName.includes("-")) {
         return propertyName;
-    }
+    };
 
     return propertyName.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
-}
+};
 
 export class StyleEngine {
     #styleTag;
