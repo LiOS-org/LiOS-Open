@@ -2,6 +2,7 @@ import { ui } from "./modules/JS/ui.js";
 import { components } from "./modules/JS/ui/extensions/components.js";
 import { overlays } from "./modules/JS/ui/extensions/overlays.js";
 import { effects } from "./modules/JS/ui/extensions/effects.js";
+import { loader } from "./modules/JS/loader.js";
 
 
 const liosOpen = {
@@ -10,6 +11,7 @@ const liosOpen = {
     components: components,
     overlays: overlays,
     effects: effects
-  }
+  },
+  loader:loader
 };
 export { liosOpen };
