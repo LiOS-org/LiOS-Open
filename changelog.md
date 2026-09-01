@@ -1,3 +1,12 @@
+## 1.3.5
+
+### UI Module
+- **apiVersion:** 4 (unchanged)
+
+#### Overlays Extension
+
+- Documented `toolTip` overlay. [See](./docs/modules/ui/ui-extensions/overlays/tooltip.md).
+
 ## 1.3.4
 
 ### UI Module 
