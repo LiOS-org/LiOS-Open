@@ -1,7 +1,7 @@
 # Roadmap (1.4.x)
 
 ## Loader Module
-- [ ] Implement Loader module
+- [x] Implement Loader module
 - [ ] Add documentation
 
 ## UI Module
