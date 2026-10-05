@@ -1,3 +1,13 @@
+## 1.4.0-alpha-1
+
+### New Module: Loader
+
+- Loader module is an independent LiOS-Open module which uses vanilla JS to draw a beautiful loader using canvas api, its a class which provides following modes.
+  - **`await`** or **`awaitInbound`**: Awaits for a callback function and displays an inward animation in the loader
+  - **`awaitOutbound`**: Awaits for a callback function and displays an outward animation in the loader.
+  - **`awaitStatic`**: Awaits for a callback function and displays a blink animation in the loader.
+  - Proper documentation will be provided in next release.
+
 ## 1.3.4
 
 ### UI Module 

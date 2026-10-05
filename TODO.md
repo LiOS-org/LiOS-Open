@@ -4,14 +4,15 @@
 
 ### [Loader Module](./ROADMAP.md#loader-module)
 
-- [ ] Make a diamond shaped container
-- [ ] Add configuration for background color, border etc
-- [ ] Add multiple pill shaped pixels like shapes inside the container
-- [ ] should have gap (optionally translucent) between the border and the main container
-- [ ] Add three options for loading (with different animation for different options):
-  - [ ]  `awaitInbound`
-  - [ ]  `awaitOutbound`
-  - [ ]  `await`
+- [x] Make a diamond shaped container
+- [x] Add configuration for background color, etc
+- [x] Add multiple pill shaped pixels like shapes inside the container
+- [x] should have gap (optionally translucent) between the border and the main container
+- [x] Add three options for loading (with different animation for different options):
+  - [x]  `awaitInbound`
+  - [x]  `awaitOutbound`
+  - [x]  `awaitStatic`
+  - [x]  `await`
 - [ ] Finish Documentation
 
 ## Phase 2:
